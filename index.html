@@ -4343,10 +4343,11 @@
     });
   });
 
-  // checkout button: go to Shopify
+  // checkout button: go straight to Shopify checkout
   $checkout.addEventListener('click', function() {
-    if (totalQty() === 0) return;
-    window.open('https://maddiessecrets.com', '_blank');
+    var qty = totalQty();
+    if (qty === 0) return;
+    window.open('https://maddies-secret.myshopify.com/cart/43638121955387:' + qty, '_blank');
   });
 
   // STEP 2 back
