@@ -83,12 +83,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 4px;
+    justify-content: center;
+    gap: 2px;
   }
   .logo-cameo {
-    width: 100px;
+    width: 140px;
     height: auto;
     display: block;
+    margin: 0 auto;
   }
   .logo {
     font-family: 'Proxima Nova Wide', 'SF Pro Display', -apple-system, sans-serif;
@@ -2540,21 +2542,23 @@
   .credits-list-name:hover .credits-role-reveal,
   .credits-list-name.tapped .credits-role-reveal { opacity: 1; }
 
-  /* Oval */
-  .credits-oval-wrap {
-    margin-bottom: 48px;
-  }
-  .credits-oval {
-    width: 120px;
-    height: 150px;
+  /* Divider oval — mid-size, centered between credit sections */
+  .credits-divider-oval {
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    padding: 48px 0;
+    margin: 0;
   }
-  .credits-oval-img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+  .credits-divider-img {
+    width: 200px;
+    height: auto;
+    display: block;
+  }
+
+  @media (max-width: 900px) {
+    .credits-divider-img { width: 160px; }
+    .credits-divider-oval { padding: 36px 0; }
   }
 
   /* Hide old structures */
@@ -3317,15 +3321,11 @@
     <p>Radish connected two geniuses — Zappas from the perfume world and Early from the comedy world — to prove our belief that the marriage of artistic forms creates products that are as magical as they are successful.</p>
   </div>
 
-  <div class="about-rule"></div>
+  <div class="credits-divider-oval">
+    <img src="https://cdn.shopify.com/s/files/1/0675/3848/5307/files/MS_Cameo_with_Oval.png?v=1781633902" alt="Maddie's Secret cameo" class="credits-divider-img" />
+  </div>
 
   <div class="credits-list">
-
-    <div class="credits-oval-wrap">
-      <div class="credits-oval">
-        <img src="https://cdn.shopify.com/s/files/1/0675/3848/5307/files/MS_Cameo_with_Oval_Ring.png?v=1781633907" alt="Maddie's Secret cameo" class="credits-oval-img" />
-      </div>
-    </div>
 
     <div class="credits-list-section">
       <span class="credits-list-label">Product</span>
@@ -3334,7 +3334,7 @@
       <span class="credits-list-name" data-role="Director, Creative Director & Writer">RUBY MCCOLLISTER<span class="credits-role-reveal">Director, Creative Director & Writer</span></span>
       <span class="credits-list-name" data-role="Creative Director, Producer & Writer">DEB TAM<span class="credits-role-reveal">Creative Director, Producer & Writer</span></span>
       <span class="credits-list-name" data-role="Producer">DAVID SCARPETTI<span class="credits-role-reveal">Producer</span></span>
-      <span class="credits-list-name" data-role="Producer">PETER HERES<span class="credits-role-reveal">Producer</span></span>
+      <span class="credits-list-name" data-role="Producer, Radish">PETER HERES<span class="credits-role-reveal">Producer, Radish</span></span>
       <span class="credits-list-name" data-role="Art & Design">GORDON LANDENBERGER<span class="credits-role-reveal">Art & Design</span></span>
       <span class="credits-list-name" data-role="Website">BROCK<span class="credits-role-reveal">Website</span></span>
     </div>
@@ -3344,6 +3344,7 @@
       <span class="credits-list-name" data-role="Executive Producer, Director, Creative Director, Writer & Producer">RUBY MCCOLLISTER<span class="credits-role-reveal">Executive Producer, Director, Creative Director, Writer & Producer</span></span>
       <span class="credits-list-name" data-role="Creative Director, Producer & Writer">DEB TAM<span class="credits-role-reveal">Creative Director, Producer & Writer</span></span>
       <span class="credits-list-name" data-role="Executive Producer, Radish">DAVID SCARPETTI<span class="credits-role-reveal">Executive Producer, Radish</span></span>
+      <span class="credits-list-name" data-role="Producer">PETER HERES<span class="credits-role-reveal">Producer</span></span>
       <span class="credits-list-name" data-role="Executive Producer, Unapologetic">CHRIS QUINTOS CATHCART<span class="credits-role-reveal">Executive Producer, Unapologetic</span></span>
       <span class="credits-list-name" data-role="Executive Producer, Unapologetic">TYLER BOEHM<span class="credits-role-reveal">Executive Producer, Unapologetic</span></span>
       <span class="credits-list-name" data-role="Producer / 1st AD">ANNABELLA LEONETTI<span class="credits-role-reveal">Producer / 1st AD</span></span>
