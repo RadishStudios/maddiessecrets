@@ -2484,53 +2484,60 @@
     border: none;
     margin: 0;
   }
-  .credits-prose {
-    font-family: "Times New Roman", Times, Georgia, serif;
-    font-size: 22px;
-    line-height: 1.9;
-    color: #0a0a0a;
-    text-align: center;
-    margin: 0;
-    padding: 56px 40px 80px;
+  /* Credits — stacked list */
+  .credits-list {
+    padding: 48px 40px 80px;
   }
-  .cn {
-    position: relative;
-    cursor: default;
-    display: inline;
+  .credits-list-section {
+    margin-bottom: 40px;
   }
-  .cn::after {
-    content: attr(title);
-    position: absolute;
-    bottom: calc(100% + 6px);
-    left: 50%;
-    transform: translateX(-50%);
-    background: #0a0a0a;
-    color: #fff;
+  .credits-list-label {
     font-family: 'SF Pro Display', -apple-system, sans-serif;
-    font-size: 9px;
+    font-size: 8px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: #bbb;
+    margin: 0 0 16px;
+    display: block;
+  }
+  .credits-list-name {
+    display: block;
+    font-family: 'SF Pro Display', -apple-system, sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #888;
+    padding: 8px 0;
+    cursor: default;
+    position: relative;
+    transition: color 0.15s;
+    border-bottom: 1px solid #f2f2f2;
+  }
+  .credits-list-name:hover { color: #0a0a0a; }
+  .credits-list-name[data-role]:not([data-role=""])::after {
+    content: attr(data-role);
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 8px;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    white-space: nowrap;
-    padding: 4px 8px;
-    pointer-events: none;
+    color: #bbb;
     opacity: 0;
     transition: opacity 0.15s;
-    z-index: 10;
+    white-space: nowrap;
+    pointer-events: none;
   }
-  .cn:hover::after { opacity: 1; }
-  .cn:hover { color: #7157a1; }
+  .credits-list-name:hover::after { opacity: 1; }
 
-  /* Credits oval */
-  .credits-wrap { text-align: center; }
+  /* Oval */
   .credits-oval-wrap {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 32px auto;
+    margin-bottom: 48px;
   }
   .credits-oval {
-    width: 180px;
-    height: 220px;
+    width: 120px;
+    height: 150px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2540,20 +2547,21 @@
     height: 100%;
     object-fit: contain;
   }
-  /* Hide old credit-block structure */
+
+  /* Hide old structures */
   .credit-block { display: none; }
   .credit-role { display: none; }
   .credit-name { display: none; }
+  .credits-prose { display: none; }
+  .cn { display: none; }
+  .credits-wrap { display: none; }
   .about-section-label { display: none; }
   .about-subsection-label { display: none; }
   .about-rule { display: none; }
 
   @media (max-width: 900px) {
-    .credits-prose {
-      font-size: 18px;
-      padding: 40px 24px 60px;
-      line-height: 1.85;
-    }
+    .credits-list { padding: 36px 24px 60px; }
+    .credits-list-name { font-size: 12px; padding: 8px 0; }
   }
 
   /* Special thanks */
@@ -3300,59 +3308,82 @@
 
   <div class="about-rule"></div>
 
-  <div class="about-credits">
-    <div class="credits-wrap">
-      <p class="credits-prose">
-        <span class="cn" title="Creator, Director">John Early</span>,
-        <span class="cn" title="Perfumist, Creator">Marissa Zappas</span>,
-        <span class="cn" title="Creative Director, Producer & Writer">Ruby McCollister</span>,
-        <span class="cn" title="Creative Director, Producer & Writer">Deb Tam</span>,
-        <span class="cn" title="Production Company">radi$h</span>,
-        <span class="cn" title="Producer">David Scarpetti</span>,
-        <span class="cn" title="Producer">Peter Heres</span>,
-        <span class="cn" title="Art & Design, Titles & Graphics">Gordon Landenberger</span>,
-        <span class="cn" title="Website">Brock</span>,
-        <span class="cn" title="Producer / 1st AD">Annabella Leonetti</span>,
-        <span class="cn" title="On Set PA">Eiley Doyle</span>,
-        <span class="cn" title="Director of Photography">Max Lakner</span>,
-        <span class="cn" title="Gaffer">Michael Glantzis</span>,
-        <span class="cn" title="Production Designer">Montana Pugh</span>,
-        <span class="cn" title="Art Assist">Maria Margot</span>,
-        <span class="cn" title="Art Assist">Anna Katherine Harman</span>,
-        <span class="cn" title="Stylist">Kimme Aaberg</span>,
-        <span class="cn" title="Hair & Make-Up">Heidi Pakdel</span>,
-      </p>
+  <div class="credits-list">
 
-      <div class="credits-oval-wrap">
-        <div class="credits-oval" id="credits-oval">
-          <img src="https://cdn.shopify.com/s/files/1/0675/3848/5307/files/MS_Cameo_with_Oval_Ring.png?v=1781633907" alt="Maddie's Secret cameo" class="credits-oval-img" id="credits-oval-img" />
-        </div>
+    <div class="credits-oval-wrap">
+      <div class="credits-oval">
+        <img src="https://cdn.shopify.com/s/files/1/0675/3848/5307/files/MS_Cameo_with_Oval_Ring.png?v=1781633907" alt="Maddie's Secret cameo" class="credits-oval-img" />
       </div>
-
-      <p class="credits-prose">
-        <span class="cn" title="Composer">Joi Olympia Marchetti</span>,
-        <span class="cn" title="Sound Mix">Cory Todd</span>,
-        <span class="cn" title="Editor">Victoria Mortati</span>,
-        <span class="cn" title="Sound Designer / Re-recording Mixer">Peter Russell</span>,
-        <span class="cn" title="Post Producer">Mehar Gujral</span>,
-        <span class="cn" title="Colorist">Marcy Robinson</span>,
-        <span class="cn" title="Post Color Senior Producer">Isabel Cafaro-Anderson</span>,
-        <span class="cn" title="Post Color Executive Producer">Megan Rumph</span>,
-        <span class="cn" title="Photographer">Jeff Rainone</span>,
-        <span class="cn" title="Photo Retouch">Nadia Selander</span>,
-        <span class="cn" title="Publicist, Track Shot">Kate McEdwards</span>,
-        <span class="cn" title="Executive Producer, Unapologetic">Chris Quintos Cathcart</span>,
-        <span class="cn" title="Executive Producer, Unapologetic">Tyler Boehm</span>,
-        <span class="cn" title="Special Thanks">Harris Mayersohn</span>,
-        <span class="cn" title="Special Thanks">Luca Intili</span>,
-        <span class="cn" title="Distributor">Magnolia Pictures</span>,
-        <span class="cn" title="Special Thanks">Tess Ornstein</span>,
-        <span class="cn" title="Special Thanks">Dogma 3000</span>,
-        <span class="cn" title="Special Thanks">Unapologetic Projects</span>,
-        <span class="cn" title="Special Thanks">Dweck Productions</span>,
-        <span class="cn" title="Special Thanks">Whetstone Pictures</span>.
-      </p>
     </div>
+
+    <div class="credits-list-section">
+      <span class="credits-list-label">Product</span>
+      <span class="credits-list-name" data-role="Creator, Director">JOHN EARLY</span>
+      <span class="credits-list-name" data-role="Perfumist, Creator">MARISSA ZAPPAS</span>
+      <span class="credits-list-name" data-role="Creative Director, Producer & Writer">RUBY MCCOLLISTER</span>
+      <span class="credits-list-name" data-role="Creative Director, Producer & Writer">DEB TAM</span>
+      <span class="credits-list-name" data-role="Producer">DAVID SCARPETTI</span>
+      <span class="credits-list-name" data-role="Producer">PETER HERES</span>
+      <span class="credits-list-name" data-role="Art & Design">GORDON LANDENBERGER</span>
+      <span class="credits-list-name" data-role="Website">BROCK</span>
+    </div>
+
+    <div class="credits-list-section">
+      <span class="credits-list-label">Campaign</span>
+      <span class="credits-list-name" data-role="Director">RUBY MCCOLLISTER</span>
+      <span class="credits-list-name" data-role="Executive Producer, Radish">DEB TAM</span>
+      <span class="credits-list-name" data-role="Executive Producer, Radish">DAVID SCARPETTI</span>
+      <span class="credits-list-name" data-role="Executive Producer, Unapologetic">CHRIS QUINTOS CATHCART</span>
+      <span class="credits-list-name" data-role="Executive Producer, Unapologetic">TYLER BOEHM</span>
+      <span class="credits-list-name" data-role="Producer / 1st AD">ANNABELLA LEONETTI</span>
+      <span class="credits-list-name" data-role="On Set PA">EILEY DOYLE</span>
+      <span class="credits-list-name" data-role="Director of Photography">MAX LAKNER</span>
+      <span class="credits-list-name" data-role="Gaffer">MICHAEL GLANTZIS</span>
+      <span class="credits-list-name" data-role="Production Designer">MONTANA PUGH</span>
+      <span class="credits-list-name" data-role="Art Assist">MARIA MARGOT</span>
+      <span class="credits-list-name" data-role="Art Assist">ANNA KATHERINE HARMAN</span>
+      <span class="credits-list-name" data-role="Stylist">KIMME AABERG</span>
+      <span class="credits-list-name" data-role="Hair & Make-Up">HEIDI PAKDEL</span>
+      <span class="credits-list-name" data-role="Composer">JOI OLYMPIA MARCHETTI</span>
+      <span class="credits-list-name" data-role="Sound Mix">CORY TODD</span>
+      <span class="credits-list-name" data-role="Voiceover, Written by">DEB TAM, RUBY MCCOLLISTER, PETER HERES</span>
+      <span class="credits-list-name" data-role="Voiceover, Performed by">JOHN EARLY</span>
+      <span class="credits-list-name" data-role="Voiceover, Performed by">RUBY MCCOLLISTER</span>
+    </div>
+
+    <div class="credits-list-section">
+      <span class="credits-list-label">Post</span>
+      <span class="credits-list-name" data-role="Editor">VICTORIA MORTATI</span>
+      <span class="credits-list-name" data-role="Sound Designer / Re-recording Mixer — Gigantic Studios, NYC">PETER RUSSELL</span>
+      <span class="credits-list-name" data-role="Post Producer">MEHAR GUJRAL</span>
+      <span class="credits-list-name" data-role="Colorist — Nice Shoes, NYC">MARCY ROBINSON</span>
+      <span class="credits-list-name" data-role="Post Color Senior Producer">ISABEL CAFARO-ANDERSON</span>
+      <span class="credits-list-name" data-role="Post Color Executive Producer">MEGAN RUMPH</span>
+    </div>
+
+    <div class="credits-list-section">
+      <span class="credits-list-label">Photo</span>
+      <span class="credits-list-name" data-role="Photographer">JEFF RAINONE</span>
+      <span class="credits-list-name" data-role="Photo Retouch">NADIA SELANDER</span>
+    </div>
+
+    <div class="credits-list-section">
+      <span class="credits-list-label">Press</span>
+      <span class="credits-list-name" data-role="Publicist, Track Shot">KATE MCEDWARDS</span>
+    </div>
+
+    <div class="credits-list-section">
+      <span class="credits-list-label">Special Thanks</span>
+      <span class="credits-list-name" data-role="">HARRIS MAYERSOHN</span>
+      <span class="credits-list-name" data-role="">LUCA INTILI</span>
+      <span class="credits-list-name" data-role="Distributor">MAGNOLIA PICTURES</span>
+      <span class="credits-list-name" data-role="">TESS ORNSTEIN</span>
+      <span class="credits-list-name" data-role="">DOGMA 3000</span>
+      <span class="credits-list-name" data-role="">UNAPOLOGETIC PROJECTS</span>
+      <span class="credits-list-name" data-role="">DWECK PRODUCTIONS</span>
+      <span class="credits-list-name" data-role="">WHETSTONE PICTURES</span>
+    </div>
+
   </div>
 
   <div class="about-rule"></div>
