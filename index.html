@@ -667,6 +667,7 @@
     flex-shrink: 0;
   }
   /* perfume-view product image — no dashed outline ever, image centered */
+  #perfume-view .mobile-product-img { display: none; }
   #perfume-view .product-carousel {
     position: relative;
     width: 100%;
@@ -1073,16 +1074,18 @@
 
   /* Image */
   #perfume-view .product-image { order: 1; display: block; width: 100%; max-width: 100%; padding: 0; min-height: unset; }
+  #perfume-view .product-carousel { display: none; }
+  #perfume-view .mobile-product-img { display: block; width: 100%; height: auto; }
   #perfume-view .product-image .img-placeholder {
     width: 100%;
     background: #f9f8f6;
+    overflow: hidden;
   }
   #perfume-view .product-image .img-placeholder img {
     width: 100%;
     height: auto;
     display: block;
-    max-height: 75vw;
-    object-fit: contain;
+    object-fit: cover;
     object-position: center;
   }
   #perfume-view .product-carousel { width: 100%; }
@@ -1960,6 +1963,29 @@
     letter-spacing: 0.04em;
     text-transform: uppercase;
   }
+  .contact-intro {
+    font-family: "Times New Roman", Times, Georgia, serif;
+    font-size: 16px;
+    font-style: italic;
+    color: #888;
+    margin: 0 0 32px;
+    line-height: 1.6;
+  }
+  .contact-email-block {
+    margin: 0;
+  }
+  .contact-email-link {
+    font-family: 'SF Pro Display', -apple-system, sans-serif;
+    font-size: 22px;
+    letter-spacing: 0.04em;
+    color: #0a0a0a;
+    text-decoration: none;
+    border-bottom: 1px solid #0a0a0a;
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .contact-email-link:hover { color: #2e1760; border-color: #2e1760; }
+
   .contact-content {
     max-width: 640px;
     margin: 0 auto;
@@ -3210,32 +3236,10 @@
 <section class="contact-content">
   <h2 class="contact-title">get in touch</h2>
 
-  <div class="contact-channels">
-    <div class="contact-channel">
-      <h3>general</h3>
-      <p>email <a href="mailto:hello@radishfilms.com">hello@radishfilms.com</a></p>
-    </div>
-    <div class="contact-channel">
-      <h3>press</h3>
-      <p>email <a href="mailto:press@radishfilms.com">press@radishfilms.com</a></p>
-    </div>
-  </div>
+  <p class="contact-intro">For questions, collaborations, wholesale, press inquiries and more —</p>
 
-  <h2 class="contact-form-title">or send a message</h2>
-
-  <div class="contact-form" id="contact-form">
-    <div class="c-row-half">
-      <input type="text" id="c-name" placeholder="full name" />
-      <input type="email" id="c-email" placeholder="email *" />
-    </div>
-    <div class="c-row">
-      <input type="text" id="c-subject" placeholder="subject" />
-    </div>
-    <div class="c-row">
-      <textarea id="c-message" placeholder="message *"></textarea>
-    </div>
-    <button type="button" class="send-btn" id="c-send">send</button>
-    <p class="form-note">fields marked with * are required.</p>
+  <div class="contact-email-block">
+    <a href="mailto:hi@radishfilms.com" class="contact-email-link">hi@radishfilms.com</a>
   </div>
 </section>
 
@@ -3451,7 +3455,8 @@
   </div>
 
   <div class="product-image">
-    <div class="product-carousel">
+    <img src="https://cdn.shopify.com/s/files/1/0675/3848/5307/files/maddies-secret-john-early-marissa-zappas-gourmand-radish-5.png?v=1781636380" alt="Maddie's Secret EDP" class="mobile-product-img" />
+      <div class="product-carousel">
       <button type="button" class="carousel-arrow carousel-prev" onclick="carouselPrev()" aria-label="Previous image">&#8592;</button>
       <div class="carousel-track">
         <div class="carousel-slide active img-placeholder drop-zone" data-product-link="true">
@@ -4471,9 +4476,9 @@
 
   function render() {
     var qty = totalQty();
-    $count.textContent = qty;
-    $subtotal.textContent = format(subtotalVal());
-    $checkout.disabled = qty === 0;
+    document.querySelectorAll('.cart-count').forEach(function(el) { el.textContent = qty; });
+    if ($subtotal) $subtotal.textContent = format(subtotalVal());
+    if ($checkout) $checkout.disabled = qty === 0;
     var keys = Object.keys(cart);
     if (keys.length === 0) {
       $items.innerHTML = '<div class="cart-empty">your bag is empty.</div>';
@@ -4525,7 +4530,7 @@
   }
 
   // wire open/close
-  $btn.addEventListener('click', openDrawer);
+  if ($btn) $btn.addEventListener('click', openDrawer);
   $overlay.addEventListener('click', closeDrawer);
   $keep.addEventListener('click', closeDrawer);
   document.querySelectorAll('#cart-close, #cart-close-2, #cart-close-3, #cart-close-4').forEach(function(b) {
