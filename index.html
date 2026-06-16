@@ -3660,8 +3660,9 @@
     var modal = document.getElementById('image-editor');
     var canvasWrap = document.getElementById('canvas-wrap');
     var canvas = document.getElementById('editor-canvas');
-    var ctx = canvas.getContext('2d');
     var brushCursor = document.getElementById('brush-cursor');
+    if (!modal || !canvas || !canvasWrap) return;
+    var ctx = canvas.getContext('2d');
 
     // State
     var state = {
@@ -4119,7 +4120,7 @@
 </script>
 
 <script>
-  document.getElementById('c-send').addEventListener('click', function() {
+  var cSend = document.getElementById('c-send'); if (cSend) cSend.addEventListener('click', function() {
     var email = document.getElementById('c-email');
     var msg = document.getElementById('c-message');
     var valid = true;
@@ -4447,7 +4448,10 @@
     if (edpImg && edpImg.src) PRODUCTS.edp.img = edpImg.src;
   })();
 
-  // step elements
+  // step elements — exit if cart drawer not in DOM
+  var $overlay = document.getElementById('cart-overlay');
+  if (!$overlay) return;
+
   var steps = {
     bag:      document.getElementById('step-bag'),
     shipping: document.getElementById('step-shipping'),
@@ -4457,7 +4461,6 @@
 
   var $btn       = document.getElementById('cart-btn');
   var $count     = document.getElementById('cart-count');
-  var $overlay   = document.getElementById('cart-overlay');
   var $drawer    = document.getElementById('cart-drawer');
   var $items     = document.getElementById('cart-items');
   var $subtotal  = document.getElementById('cart-subtotal');
