@@ -669,6 +669,8 @@
   /* perfume-view product image — no dashed outline ever, image centered */
   #perfume-view .mobile-product-img { display: none; }
   .mobile-caption { display: none; }
+  .mobile-btns { display: none; }
+  .mobile-btns-section { display: none; }
   #perfume-view .product-carousel {
     position: relative;
     width: 100%;
@@ -1078,6 +1080,12 @@
   #perfume-view .product-carousel { display: none; }
   #perfume-view .mobile-product-img { display: block; width: 100%; height: auto; }
   .mobile-caption { display: block !important; }
+  .mobile-btns { display: block !important; padding: 0 20px; }
+  .mobile-btns-section {
+    display: block !important;
+    order: 2;
+    padding: 16px 20px 0;
+  }
   #perfume-view .product-image .img-placeholder {
     width: 100%;
     background: #f9f8f6;
@@ -3459,6 +3467,10 @@
   <div class="product-image">
     <img src="https://cdn.shopify.com/s/files/1/0675/3848/5307/files/maddies-secret-john-early-marissa-zappas-gourmand-radish-5.png?v=1781636380" alt="Maddie's Secret EDP" class="mobile-product-img" />
       <p class="img-caption mobile-caption">LIMITED EDITION EAU DE PARFUM BY RADISH<br>CREATED BY MARISSA ZAPPAS WITH JOHN EARLY<br>INSPIRED BY THE FILM <a href="https://www.magpictures.com/maddiessecret/" target="_blank" rel="noopener" class="caption-link">MADDIE'S SECRET</a><br>EXCLUSIVELY SOLD AT <a href="https://www.luckyscent.com/brand/906/marissa-zappas" target="_blank" rel="noopener" class="caption-link">LUCKYSCENT</a> &amp; SCENT BAR</p>
+      <div class="mobile-btns-section">
+        <button type="button" class="perfume-order-btn" data-product="edp">Pre Order Eau de Parfum · $125</button>
+        <a href="https://www.magpictures.com/maddiessecret/" target="_blank" rel="noopener" class="film-tickets-btn">Buy Tickets to John Early's Critically Acclaimed Film</a>
+      </div>
       <div class="product-carousel">
       <button type="button" class="carousel-arrow carousel-prev" onclick="carouselPrev()" aria-label="Previous image">&#8592;</button>
       <div class="carousel-track">
