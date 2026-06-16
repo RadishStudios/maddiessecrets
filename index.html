@@ -245,53 +245,7 @@
   .spread svg { width: 100%; height: 100%; display: block; }
 
 
-  .site-footer {
-    text-align: center;
-    padding: 60px 32px 120px;
-    max-width: 100%;
-    margin: 0;
-    background: #ffffff;
-  }
 
-  .site-footer .footer-links {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    margin: 0 0 60px 0;
-  }
-  .site-footer .footer-links a {
-    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
-    font-size: 14px;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    text-decoration: none;
-    color: #999;
-  }
-  .site-footer .footer-links a:hover {
-    color: #7157a1;
-  }
-
-  .site-footer p {
-    font-size: 16px;
-    font-style: italic;
-    line-height: 1.6;
-    color: #1a1a1a;
-    margin-bottom: 14px;
-  }
-
-  .site-footer .thanks {
-    font-size: 14px;
-    color: #4a4a4a;
-  }
-  .site-footer .copyright {
-    font-size: 11px;
-    font-style: normal;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: #999;
-    margin-top: 8px;
-    margin-bottom: 0;
-  }
 
   /* Perfume view film credits */
   .perfume-film-credits {
@@ -426,7 +380,6 @@
   }
   #about-view.open, #faqs-view.open, #contact-view.open, #cinema-view.open { display: block; }
 
-  body.edp-is-home > header,
   body.edp-is-home > section.grid,
   body.edp-is-home > section.editorial { display: none !important; }
   body.edp-is-home { max-width: none !important; padding: 0 !important; margin: 0 !important; width: 100% !important; }
@@ -593,26 +546,16 @@
     overflow: hidden;
     background: #ffffff;
   }
-  #perfume-view .hero-stack {
-    position: relative;
+  .hero-stack {
     width: 100%;
-    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: #f5f5f5;
+    line-height: 0;
   }
-  #perfume-view .hero-img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  .hero-stack video {
     display: block;
-    opacity: 0;
-    transition: opacity 1.6s ease-in-out;
-  }
-  #perfume-view .hero-img.active { opacity: 1; }
-  /* dropped videos in the hero stack should always be visible (they're the new content) */
-  #perfume-view video.hero-img {
-    opacity: 1 !important;
-    z-index: 2;
+    width: 100%;
+    height: auto;
   }
   /* ═══════════════════════════════════
      PERFUME VIEW — PRODUCT DETAIL
@@ -878,7 +821,6 @@
   .fragrance-notes-list li:last-child { border-bottom: none; }
 
   /* Caption below image */
-  /* Caption + button sit inside product-image column, matching image width */
   .caption-link {
     color: inherit;
     text-decoration: none;
@@ -887,6 +829,8 @@
     transition: color 0.2s;
   }
   .caption-link:hover { color: #7157a1; }
+
+  /* Caption + button sit inside product-image column, matching image width */
   #perfume-view .product-image .img-caption {
     width: 100%;
     padding: 28px 0 16px;
@@ -916,17 +860,38 @@
     font-family: 'SF Pro Display', -apple-system, sans-serif;
     transition: background 0.2s, color 0.2s, border-color 0.2s;
     margin-top: 4px;
-    flex-shrink: 0;
-    align-self: stretch;
   }
   #perfume-view .perfume-order-btn:hover {
     background: #7157a1;
     color: #ffffff;
     border-color: #7157a1;
   }
+  #perfume-view .film-tickets-btn {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    padding: 14px 0;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 400;
+    background: transparent;
+    border: 1px solid #0a0a0a;
+    color: #0a0a0a;
+    cursor: pointer;
+    font-family: 'SF Pro Display', -apple-system, sans-serif;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+    margin-top: 6px;
+    text-decoration: none;
+  }
+  #perfume-view .film-tickets-btn:hover {
+    background: #7157a1;
+    color: #fff;
+    border-color: #7157a1;
+  }
 
   .edp-footer { display: none; }
-  .mobile-instores-accordion { display: none; }
   .img-caption {
     width: 100%;
     padding: 28px 0 16px;
@@ -1008,36 +973,19 @@
   /* ===== RESPONSIVE ===== */
   @media (max-width: 900px) {
 
-  /* Header — logo centered large purple, nav centered below */
-  #perfume-view .site-header {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 28px 24px 20px;
-    border-bottom: none;
-    gap: 14px;
+  /* Header */
+  .site-header {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    padding: 28px 24px 20px !important;
+    border-bottom: none !important;
+    gap: 14px !important;
+    position: relative;
   }
-  #perfume-view .logo {
-    font-size: 32px;
-    letter-spacing: 0.02em;
-    color: #a39cbe;
-  }
-  #perfume-view .logo a { color: #a39cbe; }
-  #perfume-view nav {
-    justify-content: center;
-    gap: 24px;
-    margin-top: 0;
-    font-size: 10px;
-    letter-spacing: 0.12em;
-    flex-wrap: wrap;
-  }
-  #perfume-view .cart-btn {
-    position: absolute;
-    top: 28px;
-    right: 20px;
-    font-size: 10px;
-    letter-spacing: 0.1em;
-  }
+  .site-header .logo { font-size: 32px !important; letter-spacing: 0.02em !important; }
+  .site-header nav { justify-content: center !important; gap: 38px !important; margin-top: 22px !important; font-size: 14px !important; letter-spacing: 0.04em !important; flex-wrap: wrap !important; }
+  /* Logo always black */
 
   /* Hero */
   #perfume-view .hero-stack { aspect-ratio: 4 / 5; }
@@ -1045,144 +993,61 @@
   /* Product grid → single column */
   #perfume-view .product-detail { grid-template-columns: 1fr; padding: 0; gap: 0; }
 
-  /* Image — full width, no padding */
-  #perfume-view .product-image {
-    order: 1;
-    display: block;
-    width: 100%;
-    max-width: 100%;
-    padding: 0;
-    min-height: unset;
-  }
-  #perfume-view .product-image img,
-  #perfume-view .product-image video { width: 100%; height: auto; object-fit: cover; max-height: none; }
+  /* Image */
+  #perfume-view .product-image { order: 1; display: block; width: 100%; max-width: 100%; padding: 0; min-height: unset; }
+  #perfume-view .product-image img, #perfume-view .product-image video { width: 100%; height: auto; object-fit: cover; max-height: none; }
   #perfume-view .product-image .img-placeholder { width: 100%; max-height: none; }
   #perfume-view .product-carousel { width: 100%; }
 
   /* Caption */
-  #perfume-view .img-caption {
-    font-size: 9px;
-    letter-spacing: 0.12em;
-    color: #999;
-    text-align: center;
-    padding: 14px 20px 0;
-  }
+  #perfume-view .img-caption { font-size: 8.5px; letter-spacing: 0.12em; color: #bbb; text-align: center; padding: 14px 20px 0; }
 
-  /* Button — same width as image, outline style matching desktop */
+  /* Buttons */
   #perfume-view .perfume-order-btn {
-    display: block !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
-    margin: 12px 0 0 !important;
-    padding: 15px 0 !important;
-    font-size: 11px !important;
-    letter-spacing: 0.12em !important;
-    background: transparent !important;
-    color: #0a0a0a !important;
-    border: 1px solid #0a0a0a !important;
-    transition: background 0.2s, color 0.2s !important;
+    display: block !important; width: 100% !important; box-sizing: border-box !important;
+    margin: 12px 0 0 !important; padding: 15px 0 !important; font-size: 11px !important;
+    letter-spacing: 0.12em !important; background: transparent !important;
+    color: #0a0a0a !important; border: 1px solid #0a0a0a !important;
   }
-  #perfume-view .perfume-order-btn:active {
-    background: #7157a1 !important;
-    color: #fff !important;
-    border-color: #7157a1 !important;
+  #perfume-view .film-tickets-btn {
+    display: block !important; width: 100% !important; box-sizing: border-box !important;
+    margin-top: 6px !important; padding: 14px 0 !important; font-size: 10.5px !important;
+    letter-spacing: 0.12em !important; color: #0a0a0a !important;
+    border: 1px solid #0a0a0a !important; background: transparent !important;
   }
 
-  /* In-store — hide on mobile, use accordion instead */
+  /* In-store — hidden on mobile */
   .also-available { display: none !important; }
 
-  /* Mobile in-stores accordion */
-  .mobile-instores-accordion {
-    display: block !important;
-    order: 4;
-    border-bottom: 1px solid #e8e8e8;
-    padding: 0 20px;
-  }
-  .mobile-instores-btn {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 20px 0;
-    font-family: 'SF Pro Display', -apple-system, sans-serif;
-    font-size: 10px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: #0a0a0a;
-    background: none;
-    border: none;
-    border-bottom: 1px solid #e8e8e8;
-    cursor: pointer;
-    text-align: left;
-  }
-  .mobile-instores-btn.open { border-bottom: none; }
-  .mobile-instores-icon { font-size: 16px; font-weight: 300; color: #bbb; }
-  .mobile-instores-body {
-    display: none;
-    padding: 8px 0 20px;
-  }
-  .mobile-instores-body.open { display: block; }
-  .mobile-instores-body p {
-    font-family: "Times New Roman", Times, serif;
-    font-size: 13px;
-    font-style: italic;
-    color: #444;
-    line-height: 1;
-    padding: 7px 0;
-    margin: 0;
-    border-bottom: 1px solid #f5f5f5;
-  }
-  .mobile-instores-body p:last-child { border-bottom: none; }
-  .mobile-instores-body a { color: #444; text-decoration: none; border-bottom: 1px solid #ccc; }
-  .instores-soon { color: #999 !important; }
-
-  /* Notes col — accordion */
+  /* Fragrance Notes — accordion */
   #perfume-view .notes-col { order: 2; height: auto; max-height: none; align-items: flex-start; padding: 0 20px; gap: 0; margin-top: 0; }
-  #perfume-view .notes-col .fragrance-notes-btn,
-  #perfume-view .notes-col .fragrance-notes-list { width: 100%; }
+  #perfume-view .notes-col .fragrance-notes-btn, #perfume-view .notes-col .fragrance-notes-list { width: 100%; }
   #perfume-view .fragrance-notes-btn {
-    display: flex !important;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 0 !important;
-    font-family: 'SF Pro Display', -apple-system, sans-serif !important;
-    font-size: 10px !important;
-    letter-spacing: 0.12em !important;
-    text-transform: uppercase !important;
-    color: #0a0a0a !important;
-    background: none !important;
-    border: none !important;
-    border-bottom: 1px solid #e8e8e8 !important;
-    cursor: pointer;
-    width: 100%;
+    display: flex !important; justify-content: space-between; align-items: center;
+    padding: 13px 0 !important; font-family: 'SF Pro Display', -apple-system, sans-serif !important;
+    font-size: 11px !important; letter-spacing: 0.06em !important; text-transform: uppercase !important;
+    font-weight: 500 !important; color: #0a0a0a !important; background: none !important;
+    border: none !important; border-bottom: 1px solid #e8e8e8 !important; cursor: pointer; width: 100%;
   }
-  #perfume-view .fragrance-notes-btn::after { content: '+'; font-size: 16px; font-weight: 300; color: #bbb; line-height: 1; }
+  #perfume-view .fragrance-notes-btn::after { content: '+'; font-size: 16px; font-weight: 300; color: #0a0a0a; line-height: 1; }
   #perfume-view .fragrance-notes-btn.open::after { content: '−'; }
-  #perfume-view .fragrance-notes-list { display: none; max-height: none !important; opacity: 1 !important; transform: none !important; pointer-events: auto !important; padding: 8px 0 16px; border-bottom: 1px solid #e8e8e8; margin: 0; }
+  #perfume-view .fragrance-notes-list { display: none; padding: 8px 0 16px; border-bottom: 1px solid #e8e8e8; margin: 0; }
   #perfume-view .fragrance-notes-list.visible { display: block !important; }
   #perfume-view .fragrance-notes-list li { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 0; color: #555; font-family: 'SF Pro Display', -apple-system, sans-serif; border: none; font-style: normal; }
 
-  /* Details */
+  /* Maddie's EDP — accordion */
   #perfume-view .details { order: 3; height: auto; max-height: none; padding: 0 20px; text-align: left; border-bottom: none; margin-top: 0; }
   #perfume-view .price { display: none; }
   #perfume-view .details-toggle {
-    display: flex !important;
-    width: 100% !important;
-    background: none !important;
-    border: none !important;
-    border-bottom: 1px solid #e8e8e8 !important;
-    padding: 20px 0 !important;
-    font-size: 10px !important;
-    letter-spacing: 0.12em !important;
-    text-transform: uppercase !important;
-    color: #0a0a0a !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-    cursor: pointer !important;
-    margin-bottom: 0 !important;
+    display: flex !important; width: 100% !important; background: none !important;
+    border: none !important; border-bottom: 1px solid #e8e8e8 !important;
+    padding: 13px 0 !important; font-size: 11px !important; letter-spacing: 0.06em !important;
+    text-transform: uppercase !important; color: #0a0a0a !important;
+    justify-content: space-between !important; align-items: center !important;
+    cursor: pointer !important; margin-bottom: 0 !important; font-weight: 500 !important;
   }
-  #perfume-view .details-arrow { font-size: 14px; font-weight: 300; color: #bbb; }
-  #perfume-view .details-body { overflow: hidden; padding: 16px 0 4px; }
+  #perfume-view .details-arrow { font-size: 16px; font-weight: 300; color: #0a0a0a; }
+  #perfume-view .details-body { overflow: hidden; padding: 13px 0 16px; }
   #perfume-view .details-body p { font-size: 13px; line-height: 1.75; color: #555; text-align: left; margin-bottom: 12px; }
 
   /* Gallery */
@@ -1193,24 +1058,25 @@
   .accordion-section { margin-top: 0; padding: 0 20px; border-top: none; }
   .accordion-item { border-bottom: 1px solid #e8e8e8; }
   .accordion-item:first-child { border-top: 1px solid #e8e8e8; }
-  .accordion-btn { padding: 20px 0 !important; background: none !important; border: none !important; }
-  .accordion-label { font-size: 10px; letter-spacing: 0.12em; }
-  .accordion-icon { font-size: 16px; color: #bbb; }
+  .accordion-btn { padding: 13px 0 !important; background: none !important; border: none !important; }
+  .accordion-label { font-size: 11px; letter-spacing: 0.06em; font-weight: 500; }
+  .accordion-icon { font-size: 16px; color: #0a0a0a; }
   .accordion-inner { padding: 4px 0 24px; }
   .accordion-inner p { font-size: 13px; line-height: 1.75; color: #555; text-align: left; }
-  .ac-title { font-size: 20px !important; text-align: left; margin: 16px 0 !important; }
+  .ac-title { font-size: 22px !important; text-align: left; margin: 16px 0 !important; }
   .ac-presents { font-size: 10px !important; text-align: left; }
   .ac-cast { font-size: 10px !important; text-align: left; }
   .ac-tickets { align-self: flex-start; margin-top: 20px; }
 
   /* Film credits */
   .perfume-film-credits { margin-top: 40px; padding: 0 20px 120px; }
-  .pfc-btn { padding: 20px 0 !important; border-top: 1px solid #e8e8e8 !important; border-bottom: 1px solid #e8e8e8 !important; margin-top: 0 !important; }
+  .pfc-btn { padding: 13px 0 !important; border-top: 1px solid #e8e8e8 !important; border-bottom: 1px solid #e8e8e8 !important; margin-top: 0 !important; }
   .pfc-label { font-size: 13px; line-height: 1.6; }
   .pfc-arrow { right: 0 !important; color: #bbb; }
   .pfc-body.open { padding: 20px 0 28px; margin: 0; }
   .pfc-companies { font-size: 12px; justify-content: flex-start; gap: 0 8px; }
   .perfumer-notes { padding: 0 20px; }
+
   }
 
   /* ===== PERFUME VIEW 2 — PRODUCT FIRST, WIDE IMAGE BELOW ===== */
@@ -2220,24 +2086,7 @@
 
   /* ===== ABOUT PAGE ===== */
   #about-view { --bg: #ffffff; --ink: #0a0a0a; }
-  #about-view header {
-    text-align: center;
-    padding: 48px 40px 40px;
-  }
   .logo a:hover { color: #7157a1; }
-  #about-view nav {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    gap: 32px;
-  }
-  #about-view nav a {
-    color: #0a0a0a;
-    text-decoration: none;
-    font-size: 14px;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-  }
   .about-content {
     max-width: 640px;
     margin: 0 auto;
@@ -2266,26 +2115,23 @@
   }
   /* Also available */
   .also-available {
-    text-align: center;
-    margin-top: 20px;
-  }
-  .also-available-line {
     font-family: "Times New Roman", Times, serif;
-    font-size: 12.5px;
+    font-size: 12px;
     font-style: italic;
     color: #444;
+    text-align: center;
+    margin-top: 32px;
     letter-spacing: 0.01em;
-    line-height: 1.8;
-    margin: 0;
+    line-height: 2.4;
+    padding: 0 60px;
   }
-  .also-available-line a {
-    color: #444;
+  .also-available a {
+    color: #999;
     text-decoration: none;
     border-bottom: 1px solid #ccc;
-    padding-bottom: 1px;
     transition: color 0.2s, border-color 0.2s;
   }
-  .also-available-line a:hover { color: #7157a1; border-color: #7157a1; }
+  .also-available a:hover { color: #7157a1; border-color: #7157a1; }
 
   /* Perfumer notes — same style as fragrance notes */
   .perfumer-notes {
@@ -2465,61 +2311,234 @@
     text-align: center;
     color: #666;
   }
-  .credit-block {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    padding: 14px 0;
-    border-bottom: 1px solid #f0f0f0;
+
+  /* ── About page — Balenciaga register ── */
+  .about-content {
+    max-width: 100%;
+    margin: 0;
+    padding: 0 0 120px;
   }
-  .credit-block:first-of-type { border-top: 1px solid #f0f0f0; }
-  .credit-role {
-    font-size: 14px;
-    letter-spacing: 0.04em;
+
+  /* Collaboration essay — full bleed, editorial */
+  .about-collab {
+    padding: 64px 32px 80px;
+    border-bottom: 1px solid #e8e8e8;
+  }
+  .about-collab-title {
+    font-family: 'SF Pro Display', -apple-system, sans-serif;
+    font-size: 8px;
+    letter-spacing: 0.3em;
     text-transform: uppercase;
-    color: #888;
-    flex-shrink: 0;
-    max-width: 45%;
+    color: #bbb;
+    margin: 0 0 48px;
+    display: block;
   }
-  .credit-name {
-    font-family: "Times New Roman", Times, Georgia, serif;
-    font-size: 16px;
+  .about-collab p {
+    font-family: 'SF Pro Display', -apple-system, sans-serif;
+    font-size: 13px;
+    line-height: 1.9;
     color: #1a1a1a;
-    text-align: right;
+    letter-spacing: 0.01em;
+    margin: 0 0 28px;
   }
-  .about-colophon {
-    margin-top: 64px;
-    text-align: center;
-    font-size: 14px;
-    letter-spacing: 0.04em;
-    text-transform: lowercase;
-    color: #999;
+  .about-collab p:last-child { margin-bottom: 0; }
+
+  /* Section divider */
+  .about-rule {
+    display: none;
   }
-  .about-secondary-links {
-    display: flex;
-    justify-content: center;
-    gap: 32px;
-    margin-bottom: 28px;
+
+  /* Credits block — full bleed rows */
+  .about-credits {
+    border-bottom: 1px solid #e8e8e8;
+    padding: 0 32px;
   }
-  .about-secondary-links a {
-    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
-    font-size: 14px;
-    letter-spacing: 0.04em;
+  .about-credits + .about-credits { border-top: none; }
+
+  /* Section label — sits above credits as a header row */
+  .about-section-label {
+    display: block;
+    font-family: 'SF Pro Display', -apple-system, sans-serif;
+    font-size: 8px;
+    letter-spacing: 0.3em;
     text-transform: uppercase;
-    text-decoration: none;
+    color: #bbb;
+    padding: 32px 0 20px;
+    border-bottom: 1px solid #e8e8e8;
+    margin: 0 0 0;
+  }
+
+  /* Subsection */
+  .about-subsection {
+    margin-top: 0;
+    padding: 0 32px;
+    border-bottom: 1px solid #e8e8e8;
+  }
+  .about-subsection-label {
+    display: block;
+    font-family: 'SF Pro Display', -apple-system, sans-serif;
+    font-size: 8px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #bbb;
+    padding: 24px 0 16px;
+    border-bottom: 1px solid #f0f0f0;
+    margin: 0;
+  }
+
+  /* Credits — flowing prose like Balenciaga */
+  .about-credits h2 { display: none; }
+  .about-credits,
+  .about-subsection {
+    padding: 0 32px;
+    border: none;
+  }
+  .about-section-label,
+  .about-subsection-label {
+    display: block;
+    font-family: 'SF Pro Display', -apple-system, sans-serif;
+    font-size: 8px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #bbb;
+    padding: 40px 0 24px;
+    border: none;
+    margin: 0;
+  }
+  .credits-prose {
+    font-family: "Times New Roman", Times, Georgia, serif;
+    font-size: 22px;
+    line-height: 1.9;
+    color: #0a0a0a;
+    text-align: center;
+    margin: 0;
+    padding: 56px 40px 80px;
+  }
+  .cn {
+    position: relative;
+    cursor: default;
+    display: inline;
+  }
+  .cn::after {
+    content: attr(title);
+    position: absolute;
+    bottom: calc(100% + 6px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: #0a0a0a;
+    color: #fff;
+    font-family: 'SF Pro Display', -apple-system, sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    padding: 4px 8px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s;
+    z-index: 10;
+  }
+  .cn:hover::after { opacity: 1; }
+  .cn:hover { color: #7157a1; }
+
+  /* Credits oval */
+  .credits-wrap { text-align: center; }
+  .credits-oval-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 32px auto;
+  }
+  .credits-oval {
+    width: 160px;
+    height: 200px;
+    border-radius: 50%;
+    border: 1px solid #0a0a0a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+  .credits-oval-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .credits-oval-placeholder {
+    font-family: 'SF Pro Display', -apple-system, sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #ccc;
+  }
+  .credits-oval-url-label {
+    font-family: 'SF Pro Display', -apple-system, sans-serif;
+    font-size: 8px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #ccc;
+    margin: 12px 0 6px;
+  }
+  .credits-oval-input {
+    font-family: 'SF Pro Display', -apple-system, sans-serif;
+    font-size: 11px;
+    color: #0a0a0a;
+    border: none;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 4px 0;
+    width: 260px;
+    max-width: 80vw;
+    text-align: center;
+    outline: none;
+    background: transparent;
+  }
+  .credits-oval-input:focus { border-bottom-color: #7157a1; }
+  /* Hide old credit-block structure */
+  .credit-block { display: none; }
+  .credit-role { display: none; }
+  .credit-name { display: none; }
+  .about-section-label { display: none; }
+  .about-subsection-label { display: none; }
+  .about-rule { display: none; }
+
+  @media (max-width: 900px) {
+    .credits-prose {
+      font-size: 18px;
+      padding: 40px 24px 60px;
+      line-height: 1.85;
+    }
+  }
+
+  /* Special thanks */
+  .about-angels {
+    padding: 40px 32px 0;
+  }
+  .about-angels .about-section-label {
+    color: #bbb;
+    padding-top: 0;
+    border-bottom: none;
+    margin-bottom: 20px;
+  }
+  .about-angels p {
+    font-family: 'SF Pro Display', -apple-system, sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    line-height: 2.4;
     color: #999;
+    margin: 0;
   }
-  .about-secondary-links a:hover {
-    color: #7157a1;
-  }
-  @media (max-width: 600px) {
-    #about-view header { padding: 32px 20px 28px; }
-    #about-view nav { gap: 18px; margin-top: 14px; }
-    .about-content { padding: 40px 20px 80px; }
-    .about-prose { font-size: 16px; }
-    .about-prose p:first-child { font-size: 18px; }
-    .credit-block { flex-direction: column; gap: 4px; }
-    .credit-name { text-align: left; }
+
+  /* Mobile */
+  @media (max-width: 900px) {
+    .about-collab { padding: 48px 24px 56px; }
+    .about-collab p { font-size: 13px; }
+    .about-credits { padding: 0 24px; }
+    .about-subsection { padding: 0 24px; }
+    .about-section-label { padding: 24px 0 16px; }
+    .about-angels { padding: 32px 24px 0; }
+    .credit-name { font-size: 10px; }
   }
 
   /* ===== Two-column grid override (after removing tank) ===== */
@@ -2577,11 +2596,66 @@
     padding: 0 4px;
   }
   .cart-btn:hover .cart-count { background: #fff; color: #1a1a1a; }
-  @media (max-width: 600px) {
-    .cart-btn { top: 16px; right: 16px; padding: 6px 10px; font-size: 14px; }
+  @media (max-width: 900px) {
+    .cart-btn {
+      position: absolute !important;
+      top: 70px !important;
+      right: 16px !important;
+      width: 28px !important;
+      height: 28px !important;
+      border-radius: 50% !important;
+      border: 1.5px solid #0a0a0a !important;
+      background: #0a0a0a !important;
+      color: #fff !important;
+      padding: 0 !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      letter-spacing: 0 !important;
+    }
+    .cart-btn .cart-count {
+      position: absolute !important;
+      top: -4px !important;
+      right: -4px !important;
+      font-size: 8px !important;
+      min-width: 13px !important;
+      height: 13px !important;
+      line-height: 13px !important;
+      background: #7157a1 !important;
+    }
+    .cart-icon { display: block; }
+    .site-header { position: relative; }
   }
 
   /* ===== Cart drawer ===== */
+  /* ===== FOOTER ===== */
+  .page-footer {
+    text-align: center;
+    padding: 80px 32px 160px;
+    background: #ffffff;
+  }
+  .page-footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+  }
+  .page-footer-links a {
+    font-family: 'SF Pro Display', -apple-system, sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #999;
+    transition: color 0.2s;
+  }
+  .page-footer-links a:hover { color: #7157a1; }
+
+  @media (max-width: 900px) {
+    .page-footer { padding: 48px 24px 100px; }
+    .page-footer-links { gap: 28px; }
+    .page-footer-links a { font-size: 11px; letter-spacing: 0.12em; }
+  }
+
   #cart-overlay {
     position: fixed;
     inset: 0;
@@ -2993,13 +3067,13 @@
 </head>
 <body class="edp-is-home">
 
-<header>
-  
-  <h1 class="logo">maddie's secrets</h1>
+<header class="site-header">
+  <h1 class="logo"><a href="#" onclick="goHome(event)">maddie's secrets</a></h1>
   <nav>
     <a href="#" onclick="openPerfume(event)">EAU DE PARFUM</a>
-
+    <a href="#" onclick="openAbout(event)">ABOUT</a>
   </nav>
+  <button type="button" class="cart-btn" id="cart-btn" aria-label="Open bag"><svg class="cart-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg><span class="cart-count" id="cart-count">0</span></button>
 </header>
 
 <section class="grid grid-two">
@@ -3032,6 +3106,7 @@
   <h1 class="logo"><a href="#" onclick="closeOverlay(event)">maddie's secrets</a></h1>
   <nav>
     <a href="#" onclick="openPerfume(event)">EAU DE PARFUM</a>
+    <a href="#" onclick="openAbout(event)">ABOUT</a>
 
   </nav>
 </header>
@@ -3075,6 +3150,7 @@
   <h1 class="logo"><a href="#" onclick="closeOverlay(event)">maddie's secrets</a></h1>
   <nav>
     <a href="#" onclick="openPerfume(event)">EAU DE PARFUM</a>
+    <a href="#" onclick="openAbout(event)">ABOUT</a>
 
   </nav>
 </header>
@@ -3128,117 +3204,114 @@
   </details>
 </section>
 
+<footer class="page-footer">
+  <div class="page-footer-links">
+    <a href="#" onclick="openFaqs(event)">FAQS</a>
+    <a href="#" onclick="openContact(event)">CONTACT</a>
+  </div>
+</footer>
 </div>
 <div id="about-view"><button class="overlay-close-btn" onclick="closeOverlay(event)">← Back</button>
-
-<header>
-  <h1 class="logo"><a href="#" onclick="closeOverlay(event)">maddie's secrets</a></h1>
-  <nav>
-    <a href="#" onclick="openPerfume(event)">EAU DE PARFUM</a>
-
-  </nav>
-</header>
-
-<section class="about-content">
-  <div class="about-credits">
-    <h2>contributors to art objects</h2>
-
-    <div class="credit-block">
-      <span class="credit-role">capsule collection vision</span>
-      <span class="credit-name">John Early is Alvadora</span>
-    </div>
-
-    <div class="credit-block">
-      <span class="credit-role">creative directors & producers</span>
-      <span class="credit-name">Ruby McCollister & Deb Tam</span>
-    </div>
-
-    <div class="credit-block">
-      <span class="credit-role">production designer, film</span>
-      <span class="credit-name">Gordon</span>
-    </div>
-
-    <div class="credit-block">
-      <span class="credit-role">production</span>
-      <span class="credit-name">David Scarpetti, Peter, Anna</span>
-    </div>
-
-    <div class="credit-block">
-      <span class="credit-role">web design & development</span>
-      <span class="credit-name">Deb Tam</span>
-    </div>
-
-    <div class="credit-block">
-      <span class="credit-role">design assistant</span>
-      <span class="credit-name">Brock</span>
-    </div>
-
-    <div class="credit-block">
-      <span class="credit-role">creator, film</span>
-      <span class="credit-name">Max</span>
-    </div>
-
-    <div class="credit-block">
-      <span class="credit-role">production designer</span>
-      <span class="credit-name">Montan Pugh</span>
-    </div>
-
-    <div class="credit-block">
-      <span class="credit-role">executive producers, film</span>
-      <span class="credit-name">Chris & Tyler, Unapologetic</span>
-    </div>
-
-    <div class="credit-block">
-      <span class="credit-role">ep & actress, film</span>
-      <span class="credit-name">Natasha</span>
-    </div>
-
-    <div class="credit-block">
-      <span class="credit-role">fragrance</span>
-      <span class="credit-name">Marissa</span>
-    </div>
-  </div>
-
-  <div class="about-angels">
-    <h2>maddie's secrets angels</h2>
-    <p>thank you Magnolia for your support with this. and to producers Luca and Harris of film, Mathew, and Dweck, Dogma 3000, Mongoose. Unapologetic.</p>
-  </div>
-
-  <div class="about-prose">
-    <p>To our knowledge, no independent film has made a niche fragrance.</p>
-    <p>two years ago, we had this vision to create diversity, new ways of revenue, or job creation within film's ecosystem as extensions, and challenge the concept of merch, but objects that stand on their own, and questioning ownership. Ruby McCollister fated to meet Deb, introduced by Libe.</p>
-    <p>she had this vision for fragrance for films, and natural progression. in an industry that at times feels like it's hard to get things made, we have always worked on this concept, of just taking steps. this feels like the beginning of what has always been inevitable. we will continue to strive for story and meaning.</p>
-    <p>Radish background in art, which found itself in financing, startups, naturally into world building and marketing, but the real thesis is belief of value culture makes, and need to de-risk, redistribute. Radish is interested in economics.</p>
-    <p>funded, produced, operated by radi$h. we are a collective, and believe in re-disruption. all the glory to Ruby McCollister. please go see our other film bunnylovr, and others to come. we hope to partner with everyone young, old, rich, poor.</p>
-    <p>life is so short, to not experiment, to make beauty, and through resistance.</p>
-    <p>art doesn't mean no path to profits, the opposite.</p>
-  </div>
-
-  <div class="about-colophon">
-    <div class="about-secondary-links">
-      <a href="#" onclick="openFaqs(event)">FAQS</a>
-      <a href="#" onclick="openContact(event)">CONTACT</a>
-    </div>
-    <p>website built by Deb Tam, at Radish</p>
-  </div>
-</section>
-
-</div>
-<div id="perfume-view"><button class="overlay-close-btn" onclick="closeOverlay(event)">← Back</button>
 
 <header class="site-header">
   <h1 class="logo"><a href="#" onclick="closeOverlay(event)">maddie's secrets</a></h1>
   <nav>
     <a href="#" onclick="openPerfume(event)">EAU DE PARFUM</a>
-
+    <a href="#" onclick="openAbout(event)">ABOUT</a>
   </nav>
-  <button type="button" class="cart-btn" id="cart-btn" aria-label="Open bag">BAG <span class="cart-count" id="cart-count">0</span></button>
+  <button type="button" class="cart-btn" aria-label="Open bag"><svg class="cart-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg><span class="cart-count">0</span></button>
 </header>
+
+<section class="about-content">
+
+  <div class="about-collab">
+    <p class="about-collab-title">About the Collaboration</p>
+    <p>John Early and Marissa Zappas with Radish present a new, sensory dimension of his feature film Maddie's Secret: an eponymous gourmand perfume.</p>
+    <p>Maddie's Secret, John Early's directorial debut, tells the story of Maddie Ralph, an unexpected viral food influencer celebrated for her unique and inspired recipes. However, once the pace of Maddie's newly fledged fame increases, so does a secret she has lived with since childhood. And we are all left wondering: Will Maddie be a good girl forever — or is this her moment of personal liberation?</p>
+    <p>Maddie's Secret EDP is in direct ode to our heroine. With notes of night-blooming jasmine, toasted rice, chocolate milk, saffron, and Sichuan pepper, the perfume winks at the millennial influencer-approved ingredients of test kitchens past while paying sincere respect to Maddie's hometown of Los Angeles, her innocence, maternal comforts, and the dark wildness of secrecy.</p>
+    <p>The creative direction riffs on classic "good girl" perfumes, filtering key aesthetic elements from fragrances like White Shoulders by Elizabeth Arden and Clinique Happy through a more complicated 21st century tone. A harmonious tension between old world and new — which is why Marissa Zappas is uniquely suited for this project.</p>
+    <p>Marissa Zappas is a highly worshiped niche perfumer known for her collaborations and personal collection that balances typical "old lady" perfume with a deeply experimental edge, like her cult-classic fragrances Annabelle's Birthday Cake and Maggie the Cat is Alive, I'm Alive. Zappas most recently worked as the nose behind Nosto's Calico, Teen, and Shiver fragrances, nominated as a 2026 Allure Readers' Choice nominee for breakthrough brand. Her fragrances brush the classic up against the future — just like Maddie Ralph's take on food.</p>
+    <p>Like Early's movie, the fragrance was made end-to-end with the same artistic integrity, joie de vivre, and care. Though a promotional object, a "merch moment" for the film, it mirrors the film itself: an elevated art object that resists category, falling somewhere beautifully in between. It's extremely unusual for an independent film to have such nice things.</p>
+    <p>Radish connected two geniuses — Zappas from the perfume world and Early from the comedy world — to prove our belief that the marriage of artistic forms creates products that are as magical as they are successful.</p>
+  </div>
+
+  <div class="about-rule"></div>
+
+  <div class="about-credits">
+    <div class="credits-wrap">
+      <p class="credits-prose">
+        <span class="cn" title="Creator, Director">John Early</span>,
+        <span class="cn" title="Perfumist, Creator">Marissa Zappas</span>,
+        <span class="cn" title="Creative Director, Producer & Writer">Ruby McCollister</span>,
+        <span class="cn" title="Creative Director, Producer & Writer">Deb Tam</span>,
+        <span class="cn" title="Production Company">radi$h</span>,
+        <span class="cn" title="Producer">David Scarpetti</span>,
+        <span class="cn" title="Producer">Peter Heres</span>,
+        <span class="cn" title="Art & Design, Titles & Graphics">Gordon Landenberger</span>,
+        <span class="cn" title="Website">Brock</span>,
+        <span class="cn" title="Producer / 1st AD">Annabella Leonetti</span>,
+        <span class="cn" title="On Set PA">Eiley Doyle</span>,
+        <span class="cn" title="Director of Photography">Max Lakner</span>,
+        <span class="cn" title="Gaffer">Michael Glantzis</span>,
+        <span class="cn" title="Production Designer">Montana Pugh</span>,
+        <span class="cn" title="Art Assist">Maria Margot</span>,
+        <span class="cn" title="Art Assist">Anna Katherine Harman</span>,
+        <span class="cn" title="Stylist">Kimme Aaberg</span>,
+        <span class="cn" title="Hair & Make-Up">Heidi Pakdel</span>,
+      </p>
+
+      <div class="credits-oval-wrap">
+        <div class="credits-oval" id="credits-oval">
+          <img src="" alt="Maddie's Secret logo" class="credits-oval-img" id="credits-oval-img" style="display:none;" />
+          <span class="credits-oval-placeholder">logo</span>
+        </div>
+        <p class="credits-oval-url-label">paste image URL</p>
+        <input type="text" class="credits-oval-input" id="credits-oval-input" placeholder="https://..." />
+      </div>
+
+      <p class="credits-prose">
+        <span class="cn" title="Composer">Joi Olympia Marchetti</span>,
+        <span class="cn" title="Sound Mix">Cory Todd</span>,
+        <span class="cn" title="Editor">Victoria Mortati</span>,
+        <span class="cn" title="Sound Designer / Re-recording Mixer">Peter Russell</span>,
+        <span class="cn" title="Post Producer">Mehar Gujral</span>,
+        <span class="cn" title="Colorist">Marcy Robinson</span>,
+        <span class="cn" title="Post Color Senior Producer">Isabel Cafaro-Anderson</span>,
+        <span class="cn" title="Post Color Executive Producer">Megan Rumph</span>,
+        <span class="cn" title="Photographer">Jeff Rainone</span>,
+        <span class="cn" title="Photo Retouch">Nadia Selander</span>,
+        <span class="cn" title="Publicist, Track Shot">Kate McEdwards</span>,
+        <span class="cn" title="Executive Producer, Unapologetic">Chris Quintos Cathcart</span>,
+        <span class="cn" title="Executive Producer, Unapologetic">Tyler Boehm</span>,
+        <span class="cn" title="Special Thanks">Harris Mayersohn</span>,
+        <span class="cn" title="Special Thanks">Luca Intili</span>,
+        <span class="cn" title="Distributor">Magnolia Pictures</span>,
+        <span class="cn" title="Special Thanks">Tess Ornstein</span>,
+        <span class="cn" title="Special Thanks">Dogma 3000</span>,
+        <span class="cn" title="Special Thanks">Unapologetic Projects</span>,
+        <span class="cn" title="Special Thanks">Dweck Productions</span>,
+        <span class="cn" title="Special Thanks">Whetstone Pictures</span>.
+      </p>
+    </div>
+  </div>
+
+  <div class="about-rule"></div>
+
+</section>
+
+<footer class="page-footer">
+  <div class="page-footer-links">
+    <a href="#" onclick="openFaqs(event)">FAQS</a>
+    <a href="#" onclick="openContact(event)">CONTACT</a>
+  </div>
+</footer>
+</div>
+<div id="perfume-view"><button class="overlay-close-btn" onclick="closeOverlay(event)">← Back</button>
 
 <!-- Hero slideshow (cross-fading) -->
 <section class="hero">
   <div class="hero-stack">
-    <video class="hero-img active" src="https://cdn.shopify.com/videos/c/o/v/314b9422fa3048baa3d3242a9ed22071.mov" autoplay loop muted playsinline></video>
+    <video src="https://cdn.shopify.com/videos/c/o/v/314b9422fa3048baa3d3242a9ed22071.mov" autoplay loop muted playsinline preload="auto" webkit-playsinline="true" style="display:block;width:100%;height:auto;background:#f5f5f5;"></video>
   </div>
 </section>
 
@@ -3258,19 +3331,6 @@
 
   </div>
 
-  <!-- Mobile-only in stores accordion -->
-  <div class="mobile-instores-accordion">
-    <div class="details">
-      <h2 class="details-toggle" onclick="toggleDetails(this)">IN STORES <span class="details-arrow">+</span></h2>
-      <div class="details-body">
-        <p>Scent Bar LA</p>
-        <p>Scent Bar Brooklyn, NY</p>
-        <p><a href="https://www.luckyscent.com/brand/906/marissa-zappas" target="_blank" rel="noopener">luckyscent.com</a></p>
-        <p style="color:#999;">Surrender Dorothy NYC — Coming Soon</p>
-      </div>
-    </div>
-  </div>
-
   <div class="product-image">
     <div class="product-carousel">
       <button type="button" class="carousel-arrow carousel-prev" onclick="carouselPrev()" aria-label="Previous image">&#8592;</button>
@@ -3283,51 +3343,9 @@
         </div>
       </div>
       <button type="button" class="carousel-arrow carousel-next" onclick="carouselNext()" aria-label="Next image">&#8594;</button>
-    <p class="img-caption">LIMITED EDITION EAU DE PARFUM BY RADISH<br>CREATED BY MARISSA ZAPPAS WITH JOHN EARLY<br>Exclusively sold at <a href="https://www.luckyscent.com/brand/906/marissa-zappas" target="_blank" rel="noopener" class="caption-link">Luckyscent</a> &amp; Scent Bar</p>
-    <button type="button" class="perfume-order-btn" data-product="edp" id="main-order-btn">PRE ORDER $125</button>
-
-    <!-- Button editor panel -->
-    <div id="btn-editor" style="display:none; margin-top:12px; border:1px solid #e0e0e0; padding:16px; background:#fff; font-family:'SF Pro Display',-apple-system,sans-serif;">
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
-        <span style="font-size:9px; letter-spacing:0.18em; text-transform:uppercase; color:#aaa;">Button Editor</span>
-        <button onclick="document.getElementById('btn-editor').style.display='none'" style="background:none;border:none;cursor:pointer;font-size:16px;color:#aaa;line-height:1;">×</button>
-      </div>
-      <div style="display:grid; gap:10px;">
-        <div style="display:flex; align-items:center; gap:12px;">
-          <label style="font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:#aaa;width:90px;flex-shrink:0;">Padding</label>
-          <input type="range" min="6" max="32" value="14" id="be-pad" style="flex:1;" oninput="updateBtn()">
-          <span id="be-pad-v" style="font-size:11px;color:#555;width:32px;">14px</span>
-        </div>
-        <div style="display:flex; align-items:center; gap:12px;">
-          <label style="font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:#aaa;width:90px;flex-shrink:0;">Font size</label>
-          <input type="range" min="8" max="18" value="11" id="be-fs" style="flex:1;" oninput="updateBtn()">
-          <span id="be-fs-v" style="font-size:11px;color:#555;width:32px;">11px</span>
-        </div>
-        <div style="display:flex; align-items:center; gap:12px;">
-          <label style="font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:#aaa;width:90px;flex-shrink:0;">Spacing</label>
-          <input type="range" min="0" max="40" value="12" id="be-ls" style="flex:1;" oninput="updateBtn()">
-          <span id="be-ls-v" style="font-size:11px;color:#555;width:40px;">0.12em</span>
-        </div>
-        <div style="display:flex; align-items:center; gap:12px;">
-          <label style="font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:#aaa;width:90px;flex-shrink:0;">Border</label>
-          <input type="range" min="1" max="4" value="1" id="be-bw" style="flex:1;" oninput="updateBtn()">
-          <span id="be-bw-v" style="font-size:11px;color:#555;width:32px;">1px</span>
-        </div>
-        <div style="display:flex; align-items:center; gap:12px;">
-          <label style="font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:#aaa;width:90px;flex-shrink:0;">Label</label>
-          <input type="text" value="PRE ORDER $125" id="be-txt" oninput="updateBtn()" style="flex:1;padding:6px 10px;font-size:12px;border:1px solid #e0e0e0;font-family:inherit;letter-spacing:0.06em;">
-        </div>
-        <div style="display:flex; gap:6px; margin-top:4px;">
-          <button onclick="setBtnStyle('outline')" id="bs-outline" style="flex:1;padding:7px 0;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;background:transparent;border:1px solid #0a0a0a;color:#0a0a0a;cursor:pointer;font-family:inherit;">Outline</button>
-          <button onclick="setBtnStyle('filled')" id="bs-filled" style="flex:1;padding:7px 0;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;background:#7157a1;border:1px solid #7157a1;color:#fff;cursor:pointer;font-family:inherit;">Filled</button>
-          <button onclick="setBtnStyle('ghost')" id="bs-ghost" style="flex:1;padding:7px 0;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;background:transparent;border:1px solid #ddd;color:#888;cursor:pointer;font-family:inherit;">Ghost</button>
-        </div>
-      </div>
-    </div>
-    </div>
-    <div class="also-available">
-      <p class="also-available-line">In-store exclusively: Scent Bar LA &nbsp;&middot;&nbsp; Scent Bar Brooklyn, NY &nbsp;&middot;&nbsp; <a href="https://www.luckyscent.com/brand/906/marissa-zappas" target="_blank" rel="noopener">luckyscent.com</a></p>
-      <p class="also-available-line">Surrender Dorothy NYC &mdash; Coming Soon</p>
+    <p class="img-caption">LIMITED EDITION EAU DE PARFUM BY RADISH<br>CREATED BY MARISSA ZAPPAS WITH JOHN EARLY<br>INSPIRED BY THE FILM <a href="https://www.magpictures.com/maddiessecret/" target="_blank" rel="noopener" class="caption-link">MADDIE'S SECRET</a><br>EXCLUSIVELY SOLD AT <a href="https://www.luckyscent.com/brand/906/marissa-zappas" target="_blank" rel="noopener" class="caption-link">LUCKYSCENT</a> &amp; SCENT BAR</p>
+    <button type="button" class="perfume-order-btn" data-product="edp" id="main-order-btn">Pre Order Eau de Parfum · $125</button>
+    <a href="https://www.magpictures.com/maddiessecret/" target="_blank" rel="noopener" class="film-tickets-btn">Buy Tickets to John Early's Critically Acclaimed Film</a>
     </div>
 
   </div>
@@ -3346,10 +3364,8 @@
 
 </section>
 
-
-
-<footer class="site-footer">
-  <div class="footer-links">
+<footer class="page-footer">
+  <div class="page-footer-links">
     <a href="#" onclick="openFaqs(event)">FAQS</a>
     <a href="#" onclick="openContact(event)">CONTACT</a>
   </div>
@@ -3428,26 +3444,7 @@
   </div>
 </div>
 
-<script>
-  // ===== HERO CROSSFADE =====
-  (function() {
-    function startCrossfade() {
-      var imgs = document.querySelectorAll('#perfume-view .hero-img');
-      if (!imgs.length) return;
-      var idx = 0;
-      setInterval(function() {
-        imgs[idx].classList.remove('active');
-        idx = (idx + 1) % imgs.length;
-        imgs[idx].classList.add('active');
-      }, 2000);
-    }
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', startCrossfade);
-    } else {
-      startCrossfade();
-    }
-  })();
-</script>
+
 
 <script>
   function openOverlay(id) {
@@ -3459,6 +3456,7 @@
   function openFaqs(e) { if (e) { e.preventDefault(); e.stopPropagation(); } closeOverlay(); openOverlay('faqs-view'); return false; }
   function openContact(e) { if (e) { e.preventDefault(); e.stopPropagation(); } closeOverlay(); openOverlay('contact-view'); return false; }
   function openCinema(e) { if (e) { e.preventDefault(); e.stopPropagation(); } closeOverlay(); openOverlay('cinema-view'); return false; }
+  function goHome(e) { if (e) { e.preventDefault(); e.stopPropagation(); } closeOverlay(); return false; }
   function openPerfume(e) {
     if (e) { e.preventDefault(); e.stopPropagation(); }
     closeOverlay();
@@ -3985,6 +3983,7 @@
   <h1 class="logo"><a href="#" onclick="closeOverlay(event)">maddie's secrets</a></h1>
   <nav>
     <a href="#" onclick="openPerfume(event)">EAU DE PARFUM</a>
+    <a href="#" onclick="openAbout(event)">ABOUT</a>
 
   </nav>
 </header>
@@ -4517,88 +4516,18 @@
     if (body) body.classList.toggle('open');
   }
 
-  var btnStyle = 'outline';
-  function setBtnStyle(s) {
-    btnStyle = s;
-    updateBtn();
-  }
-  function updateBtn() {
-    var btn = document.getElementById('main-order-btn');
-    var pad = document.getElementById('be-pad').value;
-    var fs = document.getElementById('be-fs').value;
-    var ls = (parseInt(document.getElementById('be-ls').value) / 100).toFixed(2);
-    var bw = document.getElementById('be-bw').value;
-    var txt = document.getElementById('be-txt').value;
-    document.getElementById('be-pad-v').textContent = pad + 'px';
-    document.getElementById('be-fs-v').textContent = fs + 'px';
-    document.getElementById('be-ls-v').textContent = ls + 'em';
-    document.getElementById('be-bw-v').textContent = bw + 'px';
-    btn.textContent = txt;
-    btn.style.padding = pad + 'px 0';
-    btn.style.fontSize = fs + 'px';
-    btn.style.letterSpacing = ls + 'em';
-    btn.style.borderWidth = bw + 'px';
-    btn.style.borderStyle = 'solid';
-    if (btnStyle === 'outline') {
-      btn.style.background = 'transparent';
-      btn.style.color = '#0a0a0a';
-      btn.style.borderColor = '#0a0a0a';
-    } else if (btnStyle === 'filled') {
-      btn.style.background = '#7157a1';
-      btn.style.color = '#ffffff';
-      btn.style.borderColor = '#7157a1';
-    } else {
-      btn.style.background = 'transparent';
-      btn.style.color = '#888';
-      btn.style.borderColor = '#ddd';
-    }
-  }
-
-  // Right-click or long-press on button opens editor
-  document.addEventListener('DOMContentLoaded', function() {
-    var mainBtn = document.getElementById('main-order-btn');
-    if (!mainBtn) return;
-    var pressTimer;
-    mainBtn.addEventListener('contextmenu', function(e) {
-      e.preventDefault();
-      document.getElementById('btn-editor').style.display = 'block';
-    });
-    mainBtn.addEventListener('touchstart', function() {
-      pressTimer = setTimeout(function() {
-        document.getElementById('btn-editor').style.display = 'block';
-      }, 600);
-    });
-    mainBtn.addEventListener('touchend', function() { clearTimeout(pressTimer); });
-    mainBtn.addEventListener('touchmove', function() { clearTimeout(pressTimer); });
-  });
-
-  function toggleMobileInstores(btn) {
-    var body = btn.nextElementSibling;
-    var icon = btn.querySelector('.mobile-instores-icon');
-    var isOpen = body.classList.contains('open');
-    if (isOpen) {
-      body.classList.remove('open');
-      btn.classList.remove('open');
-      icon.textContent = '+';
-    } else {
-      body.classList.add('open');
-      btn.classList.add('open');
-      icon.textContent = '−';
-    }
-  }
-
   function toggleNotes(btn) {
     var list = btn.nextElementSibling;
     if (!list) return;
     var isOpen = btn.classList.contains('open');
     if (isOpen) {
-      list.style.display = 'none';
       list.classList.remove('visible');
+      list.style.display = 'none';
       btn.classList.remove('open');
       btn.textContent = 'Fragrance Notes';
     } else {
-      list.style.display = 'block';
       list.classList.add('visible');
+      list.style.display = 'block';
       btn.classList.add('open');
       btn.textContent = 'Fragrance Notes';
     }
