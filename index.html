@@ -24,6 +24,36 @@
   :root { --bg: #ffffff; --ink: #0a0a0a; --line: #0a0a0a; }
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
+  /* ===== SPLASH SCREEN ===== */
+  #splash-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    animation: splashFadeIn 1.2s ease forwards;
+    transition: opacity 1.4s ease;
+  }
+  @keyframes splashFadeIn {
+    0% { opacity: 0; }
+    40% { opacity: 1; }
+    100% { opacity: 1; }
+  }
+  #splash-screen.fade-out {
+    opacity: 0;
+    pointer-events: none;
+  }
+  #splash-img {
+    width: 480px;
+    max-width: 80vw;
+    height: auto;
+    display: block;
+    cursor: pointer;
+  }
+
   html, body {
     background: var(--bg);
     color: var(--ink);
@@ -52,15 +82,26 @@
     .cameo-mark { height: 110px; margin-bottom: 16px; }
   }
 
+  .logo-lockup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+  .logo-cameo {
+    width: 64px;
+    height: auto;
+    display: block;
+  }
   .logo {
     font-family: 'Proxima Nova Wide', 'SF Pro Display', -apple-system, sans-serif;
     font-weight: 300;
     font-size: 56px;
     letter-spacing: -0.01em;
     line-height: 1;
-    color: #0a0a0a;
+    color: #594679;
   }
-  .logo a { color: inherit; text-decoration: none; transition: color 0.15s; }
+  .logo a { color: #594679; text-decoration: none; transition: color 0.15s; }
 
   .tagline {
     margin-top: 0;
@@ -519,8 +560,9 @@
     font-size: 56px;
     letter-spacing: -0.01em;
     line-height: 1;
+    color: #594679;
   }
-  #perfume-view .logo a { color: inherit; text-decoration: none; transition: color 0.15s; }
+  #perfume-view .logo a { color: #594679; text-decoration: none; transition: color 0.15s; }
   .logo a:hover { color: #7157a1; }
   #perfume-view nav {
     margin-top: 22px;
@@ -1020,6 +1062,7 @@
     position: relative;
   }
   .site-header .logo { font-size: 32px !important; letter-spacing: 0.02em !important; }
+  .logo-cameo { width: 60px !important; }
   .site-header nav { justify-content: center !important; gap: 38px !important; margin-top: 22px !important; font-size: 14px !important; letter-spacing: 0.04em !important; flex-wrap: wrap !important; }
   /* Logo always black */
 
@@ -2486,50 +2529,17 @@
     margin: 32px auto;
   }
   .credits-oval {
-    width: 160px;
-    height: 200px;
-    border-radius: 50%;
-    border: 1px solid #0a0a0a;
+    width: 180px;
+    height: 220px;
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
-    position: relative;
   }
   .credits-oval-img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
   }
-  .credits-oval-placeholder {
-    font-family: 'SF Pro Display', -apple-system, sans-serif;
-    font-size: 9px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: #ccc;
-  }
-  .credits-oval-url-label {
-    font-family: 'SF Pro Display', -apple-system, sans-serif;
-    font-size: 8px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: #ccc;
-    margin: 12px 0 6px;
-  }
-  .credits-oval-input {
-    font-family: 'SF Pro Display', -apple-system, sans-serif;
-    font-size: 11px;
-    color: #0a0a0a;
-    border: none;
-    border-bottom: 1px solid #e0e0e0;
-    padding: 4px 0;
-    width: 260px;
-    max-width: 80vw;
-    text-align: center;
-    outline: none;
-    background: transparent;
-  }
-  .credits-oval-input:focus { border-bottom-color: #7157a1; }
   /* Hide old credit-block structure */
   .credit-block { display: none; }
   .credit-role { display: none; }
@@ -3103,8 +3113,16 @@
 </head>
 <body class="edp-is-home">
 
+<!-- Splash screen -->
+<div id="splash-screen">
+  <img src="https://cdn.shopify.com/s/files/1/0675/3848/5307/files/Screenshot_2026-06-13_at_3.01.19_PM.png?v=1781633592" alt="Maddie's Secret" id="splash-img" />
+</div>
+
 <header class="site-header">
+  <div class="logo-lockup">
+  <img src="https://cdn.shopify.com/s/files/1/0675/3848/5307/files/MS_Cameo_with_Oval_Ring.png?v=1781633907" alt="Maddie's Secret cameo" class="logo-cameo" />
   <h1 class="logo"><a href="#" onclick="goHome(event)">maddie's secrets</a></h1>
+</div>
   <nav>
     <a href="#" onclick="openPerfume(event)">EAU DE PARFUM</a>
     <a href="#" onclick="openAbout(event)">ABOUT</a>
@@ -3139,7 +3157,10 @@
 <div id="contact-view"><button class="overlay-close-btn" onclick="closeOverlay(event)">← Back</button>
 
 <header>
+  <div class="logo-lockup">
+  <img src="https://cdn.shopify.com/s/files/1/0675/3848/5307/files/MS_Cameo_with_Oval_Ring.png?v=1781633907" alt="Maddie's Secret cameo" class="logo-cameo" />
   <h1 class="logo"><a href="#" onclick="closeOverlay(event)">maddie's secrets</a></h1>
+</div>
   <nav>
     <a href="#" onclick="openPerfume(event)">EAU DE PARFUM</a>
     <a href="#" onclick="openAbout(event)">ABOUT</a>
@@ -3183,7 +3204,10 @@
 <div id="faqs-view"><button class="overlay-close-btn" onclick="closeOverlay(event)">← Back</button>
 
 <header>
+  <div class="logo-lockup">
+  <img src="https://cdn.shopify.com/s/files/1/0675/3848/5307/files/MS_Cameo_with_Oval_Ring.png?v=1781633907" alt="Maddie's Secret cameo" class="logo-cameo" />
   <h1 class="logo"><a href="#" onclick="closeOverlay(event)">maddie's secrets</a></h1>
+</div>
   <nav>
     <a href="#" onclick="openPerfume(event)">EAU DE PARFUM</a>
     <a href="#" onclick="openAbout(event)">ABOUT</a>
@@ -3250,7 +3274,10 @@
 <div id="about-view"><button class="overlay-close-btn" onclick="closeOverlay(event)">← Back</button>
 
 <header class="site-header">
+  <div class="logo-lockup">
+  <img src="https://cdn.shopify.com/s/files/1/0675/3848/5307/files/MS_Cameo_with_Oval_Ring.png?v=1781633907" alt="Maddie's Secret cameo" class="logo-cameo" />
   <h1 class="logo"><a href="#" onclick="closeOverlay(event)">maddie's secrets</a></h1>
+</div>
   <nav>
     <a href="#" onclick="openPerfume(event)">EAU DE PARFUM</a>
     <a href="#" onclick="openAbout(event)">ABOUT</a>
@@ -3298,11 +3325,8 @@
 
       <div class="credits-oval-wrap">
         <div class="credits-oval" id="credits-oval">
-          <img src="" alt="Maddie's Secret logo" class="credits-oval-img" id="credits-oval-img" style="display:none;" />
-          <span class="credits-oval-placeholder">logo</span>
+          <img src="https://cdn.shopify.com/s/files/1/0675/3848/5307/files/MS_Cameo_with_Oval_Ring.png?v=1781633907" alt="Maddie's Secret cameo" class="credits-oval-img" id="credits-oval-img" />
         </div>
-        <p class="credits-oval-url-label">paste image URL</p>
-        <input type="text" class="credits-oval-input" id="credits-oval-input" placeholder="https://..." />
       </div>
 
       <p class="credits-prose">
@@ -3492,6 +3516,26 @@
   function openFaqs(e) { if (e) { e.preventDefault(); e.stopPropagation(); } closeOverlay(); openOverlay('faqs-view'); return false; }
   function openContact(e) { if (e) { e.preventDefault(); e.stopPropagation(); } closeOverlay(); openOverlay('contact-view'); return false; }
   function openCinema(e) { if (e) { e.preventDefault(); e.stopPropagation(); } closeOverlay(); openOverlay('cinema-view'); return false; }
+  // Splash screen — auto fade + click to skip
+  (function() {
+    var splash = document.getElementById('splash-screen');
+    if (!splash) return;
+
+    function dismissSplash() {
+      if (splash.classList.contains('fade-out')) return;
+      splash.classList.add('fade-out');
+      setTimeout(function() {
+        splash.style.display = 'none';
+      }, 1500);
+    }
+
+    // Auto dismiss after 4s
+    setTimeout(dismissSplash, 4000);
+
+    // Click or tap to dismiss early
+    splash.addEventListener('click', dismissSplash);
+  })();
+
   function goHome(e) { if (e) { e.preventDefault(); e.stopPropagation(); } closeOverlay(); return false; }
   function openPerfume(e) {
     if (e) { e.preventDefault(); e.stopPropagation(); }
@@ -4016,7 +4060,10 @@
 <div id="cinema-view"><button class="overlay-close-btn" onclick="closeOverlay(event)">&larr; Back</button>
 
 <header>
+  <div class="logo-lockup">
+  <img src="https://cdn.shopify.com/s/files/1/0675/3848/5307/files/MS_Cameo_with_Oval_Ring.png?v=1781633907" alt="Maddie's Secret cameo" class="logo-cameo" />
   <h1 class="logo"><a href="#" onclick="closeOverlay(event)">maddie's secrets</a></h1>
+</div>
   <nav>
     <a href="#" onclick="openPerfume(event)">EAU DE PARFUM</a>
     <a href="#" onclick="openAbout(event)">ABOUT</a>
