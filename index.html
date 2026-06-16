@@ -1073,8 +1073,19 @@
 
   /* Image */
   #perfume-view .product-image { order: 1; display: block; width: 100%; max-width: 100%; padding: 0; min-height: unset; }
-  #perfume-view .product-image img, #perfume-view .product-image video { width: 100%; height: auto; object-fit: cover; max-height: none; }
-  #perfume-view .product-image .img-placeholder { width: 100%; max-height: none; }
+  #perfume-view .product-image .img-placeholder {
+    width: 100%;
+    background: #f9f8f6;
+    overflow: hidden;
+  }
+  #perfume-view .product-image .img-placeholder img {
+    width: 100%;
+    height: auto;
+    max-height: 80vw;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+  }
   #perfume-view .product-carousel { width: 100%; }
 
   /* Caption */
@@ -2521,11 +2532,17 @@
     padding: 11px 0;
     cursor: pointer;
     border-bottom: 1px solid #ede8e1;
-    transition: color 0.2s, background 0.2s;
+    transition: color 0.15s, background 0.15s;
     position: relative;
   }
   .credits-list-name:hover,
-  .credits-list-name.tapped { color: #2e1760; }
+  .credits-list-name.tapped {
+    color: #2e1760;
+    background: #f5f0fa;
+    padding-left: 8px;
+    padding-right: 8px;
+    margin: 0 -8px;
+  }
   .credits-role-reveal {
     font-family: 'SF Pro Display', -apple-system, sans-serif;
     font-size: 9px;
