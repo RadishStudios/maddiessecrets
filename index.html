@@ -2749,6 +2749,214 @@
   }
 
   /* ===== Cart drawer ===== */
+  /* ===== BABY TEE PAGE ===== */
+  #baby-tee-view {
+    position: fixed;
+    inset: 0;
+    z-index: 500;
+    background: #fff;
+    overflow-y: auto;
+    transform: translateY(100%);
+    transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+  }
+  #baby-tee-view.open { transform: translateY(0); }
+
+  /* Tee 3-column layout matching old charm page */
+  .tee-detail {
+    display: grid;
+    grid-template-columns: 520px 1fr;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 40px 120px;
+    gap: 60px;
+    align-items: start;
+    justify-content: center;
+  }
+
+  /* Left — details */
+  .tee-notes {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-right: 48px;
+    padding-top: 40px;
+    gap: 0;
+  }
+  .tee-note-item {
+    font-family: "Times New Roman", Times, Georgia, serif;
+    font-size: 16px;
+    color: #0a0a0a;
+    text-align: right;
+    line-height: 1.4;
+    margin: 0 0 16px;
+  }
+
+  /* Center — image */
+  .tee-image {
+    width: 100%;
+  }
+  /* Tee carousel */
+  .tee-carousel { position: relative; width: 100%; overflow: hidden; display: flex; justify-content: center; }
+  .tee-carousel-track { display: flex; justify-content: center; width: 100%; }
+  .tee-slide { width: auto; max-width: 100%; height: auto; display: none; flex-shrink: 0; object-fit: contain; margin: 0 auto; }
+  .tee-slide.active { display: block; }
+  .tee-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.85);
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: #0a0a0a;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    z-index: 2;
+  }
+  .tee-arrow:hover { background: #0a0a0a; color: #fff; }
+  .tee-prev { left: 10px; }
+  .tee-next { right: 10px; }
+
+  .tee-placeholder {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    background: #f5f2f8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px dashed #e0daf0;
+  }
+  .tee-placeholder-text {
+    font-family: 'SF Pro Display', -apple-system, sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: #c4b9cc;
+  }
+
+  /* Right — info */
+  .tee-info {
+    padding-left: 48px;
+    padding-top: 40px;
+  }
+  .tee-price {
+    font-family: 'SF Pro Display', -apple-system, sans-serif;
+    font-size: 18px;
+    color: #0a0a0a;
+    margin: 0 0 24px;
+    letter-spacing: 0.01em;
+  }
+  .tee-info-label {
+    font-family: "Times New Roman", Times, Georgia, serif;
+    font-size: 22px;
+    font-weight: normal;
+    font-style: italic;
+    letter-spacing: 0;
+    color: #0a0a0a;
+    margin: 0 0 16px;
+  }
+  .tee-copy {
+    font-family: 'SF Pro Display', -apple-system, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    line-height: 1.75;
+    color: #444;
+    text-transform: uppercase;
+    margin: 0 0 20px;
+  }
+  .tee-copy-body {
+    font-family: 'SF Pro Display', -apple-system, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    line-height: 1.75;
+    color: #555;
+    margin: 0 0 20px;
+  }
+  .tee-specs {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px;
+  }
+  .tee-specs li {
+    font-family: 'SF Pro Display', -apple-system, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: #666;
+    padding: 5px 0;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  .tee-specs li::before {
+    content: "* ";
+    color: #bbb;
+  }
+  .tee-unisex-callout {
+    margin-top: 20px;
+    padding: 12px 16px;
+    border: 1px solid #e8e8e8;
+    background: #faf8f5;
+  }
+  .tee-unisex-callout p {
+    font-family: 'SF Pro Display', -apple-system, sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #888;
+    margin: 0;
+  }
+
+  .tee-actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-top: 32px;
+    flex-wrap: wrap;
+  }
+  .tee-add-btn {
+    font-family: 'SF Pro Display', -apple-system, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: #0a0a0a;
+    color: #fff;
+    border: none;
+    padding: 14px 24px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .tee-add-btn:hover { background: #594679; }
+  .tee-essay-btn {
+    font-family: 'SF Pro Display', -apple-system, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #0a0a0a;
+    border: 1px solid #0a0a0a;
+    padding: 13px 20px;
+    text-decoration: none;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .tee-essay-btn:hover { color: #594679; border-color: #594679; }
+
+  @media (max-width: 900px) {
+    .tee-detail {
+      grid-template-columns: 1fr;
+      padding: 24px 20px 80px;
+      gap: 0;
+    }
+    .tee-notes {
+      display: none;
+    }
+    .tee-info {
+      padding-left: 0;
+      padding-top: 24px;
+    }
+  }
+
   /* ===== FOOTER ===== */
   .page-footer {
     text-align: center;
@@ -3200,6 +3408,7 @@
 </div>
   <nav>
     <a href="#" onclick="openPerfume(event)">EAU DE PARFUM</a>
+    <a href="#" onclick="openBabyTee(event)">BABY TEE</a>
     <a href="#" onclick="openAbout(event)">ABOUT</a>
   </nav>
   <button type="button" class="cart-btn" id="cart-btn" aria-label="Open bag"><svg class="cart-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg><span class="cart-count" id="cart-count">0</span></button>
@@ -3324,6 +3533,73 @@
   </div>
 </footer>
 </div>
+<div id="baby-tee-view"><button class="overlay-close-btn" onclick="closeOverlay(event)">← Back</button>
+
+<header class="site-header">
+  <div class="logo-lockup">
+    <img src="https://cdn.shopify.com/s/files/1/0675/3848/5307/files/MS_Cameo_with_Oval_Ring.png?v=1781633907" alt="Maddie's Secret cameo" class="logo-cameo" />
+    <h1 class="logo"><a href="#" onclick="closeOverlay(event)">maddie's secrets</a></h1>
+  </div>
+  <nav>
+    <a href="#" onclick="openPerfume(event)">EAU DE PARFUM</a>
+    <a href="#" onclick="openBabyTee(event)">BABY TEE</a>
+    <a href="#" onclick="openAbout(event)">ABOUT</a>
+  </nav>
+  <button type="button" class="cart-btn" aria-label="Open bag"><svg class="cart-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg><span class="cart-count">0</span></button>
+</header>
+
+<section class="tee-detail">
+
+  <!-- Center: image -->
+  <div class="tee-image">
+    <div class="tee-carousel" style="position:relative;">
+      <div class="tee-carousel-track">
+        <img class="tee-slide active" src="https://cdn.shopify.com/s/files/1/0675/3848/5307/files/IMG_3901.heic?v=1783094086" alt="Maddie's Secret Baby Tee 1" />
+        <img class="tee-slide" src="https://cdn.shopify.com/s/files/1/0675/3848/5307/files/730487657_1335228291920580_6513246142442030022_n_png.jpg?v=1783093434" alt="Maddie's Secret Baby Tee 2" />
+      </div>
+      <button class="tee-arrow tee-prev" onclick="teeCarouselPrev()" aria-label="Previous">&#8592;</button>
+      <button class="tee-arrow tee-next" onclick="teeCarouselNext()" aria-label="Next">&#8594;</button>
+    </div>
+  </div>
+
+  <!-- Right: copy + price + button -->
+  <div class="tee-info">
+    
+
+    <h2 class="tee-info-label">GourMaybe Girl Baby-Rib Tee</h2>
+
+    <p class="tee-copy-body">This is a classic take on a baby-rib tee — produced in small batches, a RARE 90s-style LA-inspired garment cut from 100% combed cotton, with the comfort of your favorite shirt but with a chic, almost high-end luxury twist.
+
+What sets it apart is the print. Fine artist and painter Gordon Landenberger drew an original charcoal portrait of John Early as Maddie Ralph in John's Los Angeles home. The work was subsequently transferred by screenprint onto heather gray, preserving the intimacy of the original drawing in every run.
+
+This Maddie's Secret collectible carries all the punch of American-made with a subtle hint of Italian Renaissance and the sensibility of Paul Cadmus. This garment is also available in unisex sizes without the rib texture. We hope you enjoy it.</p>
+
+    <ul class="tee-specs">
+      <li>1×1 baby rib</li>
+      <li>100% combed cotton</li>
+      <li>Classic 90s silhouette</li>
+      <li>Women's sizing</li>
+    </ul>
+
+    <div class="tee-unisex-callout">
+      <p>Also available: Unisex sizing without rib texture</p>
+    </div>
+
+    <div class="tee-actions">
+      <a href="https://maddiessecret.merchtable.com/apparel/portrait-baby-tee" target="_blank" rel="noopener" class="tee-add-btn">Pre-Order at Merchtable ↗</a>
+    </div>
+  </div>
+
+</section>
+
+<footer class="page-footer">
+  <div class="page-footer-links">
+    <a href="#" onclick="openFaqs(event)">FAQS</a>
+    <a href="#" onclick="openContact(event)">CONTACT</a>
+  </div>
+</footer>
+</div>
+
 <div id="about-view"><button class="overlay-close-btn" onclick="closeOverlay(event)">← Back</button>
 
 <header class="site-header">
@@ -3333,6 +3609,7 @@
 </div>
   <nav>
     <a href="#" onclick="openPerfume(event)">EAU DE PARFUM</a>
+    <a href="#" onclick="openBabyTee(event)">BABY TEE</a>
     <a href="#" onclick="openAbout(event)">ABOUT</a>
   </nav>
   <button type="button" class="cart-btn" aria-label="Open bag"><svg class="cart-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg><span class="cart-count">0</span></button>
@@ -3362,18 +3639,18 @@
       <span class="credits-list-name" data-role="Creator, Director of Maddie's Secret Film">JOHN EARLY<span class="credits-role-reveal">Creator, Director of Maddie's Secret Film</span></span>
       <span class="credits-list-name" data-role="Perfumist, Creator">MARISSA ZAPPAS<span class="credits-role-reveal">Perfumist, Creator</span></span>
       <span class="credits-list-name" data-role="Director, Creative Director & Writer">RUBY MCCOLLISTER<span class="credits-role-reveal">Director, Creative Director & Writer</span></span>
-      <span class="credits-list-name" data-role="Creative Director, Producer & Writer">DEB TAM<span class="credits-role-reveal">Creative Director, Producer & Writer</span></span>
-      <span class="credits-list-name" data-role="Producer">DAVID SCARPETTI<span class="credits-role-reveal">Producer</span></span>
+      <span class="credits-list-name" data-role="Creative Director, Producer, Writer & Website Developer">DEB TAM<span class="credits-role-reveal">Creative Director, Producer, Writer & Website Developer</span></span>
+      
       <span class="credits-list-name" data-role="Producer, Radish">PETER HERES<span class="credits-role-reveal">Producer, Radish</span></span>
       <span class="credits-list-name" data-role="Art & Design">GORDON LANDENBERGER<span class="credits-role-reveal">Art & Design</span></span>
-      <span class="credits-list-name" data-role="Website">BROCK<span class="credits-role-reveal">Website</span></span>
+      <span class="credits-list-name" data-role="Writer & Editor">LAYLA HALABIAN<span class="credits-role-reveal">Writer & Editor</span></span>
     </div>
 
     <div class="credits-list-section">
       <span class="credits-list-label">Campaign</span>
       <span class="credits-list-name" data-role="Executive Producer, Director, Creative Director, Writer & Producer">RUBY MCCOLLISTER<span class="credits-role-reveal">Executive Producer, Director, Creative Director, Writer & Producer</span></span>
       <span class="credits-list-name" data-role="Creative Director, Producer & Writer">DEB TAM<span class="credits-role-reveal">Creative Director, Producer & Writer</span></span>
-      <span class="credits-list-name" data-role="Executive Producer, Radish">DAVID SCARPETTI<span class="credits-role-reveal">Executive Producer, Radish</span></span>
+      
       <span class="credits-list-name" data-role="Producer">PETER HERES<span class="credits-role-reveal">Producer</span></span>
       <span class="credits-list-name" data-role="Executive Producer, Unapologetic">CHRIS QUINTOS CATHCART<span class="credits-role-reveal">Executive Producer, Unapologetic</span></span>
       <span class="credits-list-name" data-role="Executive Producer, Unapologetic">TYLER BOEHM<span class="credits-role-reveal">Executive Producer, Unapologetic</span></span>
@@ -3591,6 +3868,24 @@
     document.body.classList.add('overlay-open');
     document.getElementById(id).scrollTop = 0;
   }
+  // Tee carousel
+  (function() {
+    var slides = [];
+    var idx = 0;
+    function init() {
+      slides = document.querySelectorAll('.tee-slide');
+    }
+    function show(n) {
+      slides.forEach(function(s) { s.classList.remove('active'); });
+      idx = (n + slides.length) % slides.length;
+      slides[idx].classList.add('active');
+    }
+    window.teeCarouselPrev = function() { if (!slides.length) init(); show(idx - 1); };
+    window.teeCarouselNext = function() { if (!slides.length) init(); show(idx + 1); };
+    document.addEventListener('DOMContentLoaded', init);
+  })();
+
+  function openBabyTee(e) { if (e) { e.preventDefault(); e.stopPropagation(); } closeOverlay(); openOverlay('baby-tee-view'); return false; }
   function openAbout(e) { if (e) { e.preventDefault(); e.stopPropagation(); } closeOverlay(); openOverlay('about-view'); return false; }
   function openFaqs(e) { if (e) { e.preventDefault(); e.stopPropagation(); } closeOverlay(); openOverlay('faqs-view'); return false; }
   function openContact(e) { if (e) { e.preventDefault(); e.stopPropagation(); } closeOverlay(); openOverlay('contact-view'); return false; }
@@ -3635,14 +3930,10 @@
   });
 
   function goHome(e) { if (e) { e.preventDefault(); e.stopPropagation(); } closeOverlay(); return false; }
-  function openPerfume(e) {
-    if (e) { e.preventDefault(); e.stopPropagation(); }
-    closeOverlay();
-    return false;
-  }
+  function openPerfume(e) { if (e) { e.preventDefault(); e.stopPropagation(); } closeOverlay(); openOverlay('perfume-view'); return false; }
   function closeOverlay(e) {
     if (e) e.preventDefault();
-    ['about-view','faqs-view','contact-view','cinema-view'].forEach(function(id) {
+    ['about-view','faqs-view','contact-view','cinema-view','perfume-view','baby-tee-view'].forEach(function(id) {
       var el = document.getElementById(id);
       if (el) el.classList.remove('open');
     });
