@@ -4395,17 +4395,18 @@
     var input = document.getElementById('charm-input');
     var tagline = document.getElementById('charm-tagline');
     var email = input.value;
-    input.disabled = true;
+    if (!email) return;
 
-    fetch('https://tally.so/r/LZNqv2', {
+    fetch('https://script.google.com/macros/s/AKfycbwI5rffDtxmc_yDIkxNhYbXOmYievcMB9iklngdGCOIzov0yVyLztcBBiXTh4hlH45G/exec', {
       method: 'POST',
       mode: 'no-cors',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: 'email=' + encodeURIComponent(email)
-    });
+    }).catch(function(){});
 
     input.value = '';
-    input.style.display = 'none';
+    input.disabled = true;
+    e.target.style.display = 'none';
     if (tagline) tagline.textContent = 'thank you ♡';
   }
 
@@ -5566,4 +5567,5 @@
 </script>
 </body>
 </html>
+
 
