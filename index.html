@@ -410,15 +410,37 @@
 
   /* EDP is the home page — always visible, not an overlay */
   #perfume-view { display: block; width: 100%; }
+  #perfume-view .page-footer {
+    padding: 60px 40px 80px !important;
+    border-top: 1px solid #efefef !important;
+    margin-top: 0 !important;
+  }
+  #perfume-view .page-footer-links {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 56px !important;
+    margin: 0 0 40px !important;
+  }
+  #perfume-view .page-footer-links a {
+    font-size: 13px !important;
+    letter-spacing: 0.08em !important;
+    color: #aaa !important;
+  }
+  #perfume-view .page-footer-copy {
+    font-size: 9px !important;
+    color: #ccc !important;
+    white-space: nowrap !important;
+  }
   #perfume-view .overlay-close-btn { display: none; }
 
   /* All other views are overlays — hidden by default */
   #about-view, #faqs-view, #contact-view, #cinema-view {
-    display: none; position: fixed; inset: 0; background: #ffffff;
+    opacity: 0; pointer-events: none; position: fixed; inset: 0; background: #ffffff;
     z-index: 9999; overflow-y: auto; overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
+    transition: opacity 0.25s ease;
   }
-  #about-view.open, #faqs-view.open, #contact-view.open, #cinema-view.open { display: block; }
+  #about-view.open, #faqs-view.open, #contact-view.open, #cinema-view.open { opacity: 1; pointer-events: auto; }
 
   body.edp-is-home > section.grid,
   body.edp-is-home > section.editorial { display: none !important; }
@@ -703,6 +725,16 @@
   }
   #perfume-view .carousel-arrow.carousel-prev { left: 12px; }
   #perfume-view .carousel-arrow.carousel-next { right: 12px; }
+
+  @media (max-width: 900px) {
+    #perfume-view .carousel-arrow {
+      width: 40px !important;
+      height: 40px !important;
+      font-size: 18px !important;
+      opacity: 1 !important;
+      background: rgba(255,255,255,0.9) !important;
+    }
+  }
   #perfume-view .carousel-arrow:hover { background: #0a0a0a; color: #fff; }
   #perfume-view .product-image .img-placeholder,
   #perfume-view .product-image .img-placeholder.drop-zone,
@@ -852,7 +884,7 @@
     margin-bottom: 10px;
     padding: 0;
     background: transparent;
-    color: #0a0a0a;
+    color: #594679;
     border: none;
     font-family: 'SF Pro Display', -apple-system, sans-serif;
     font-size: 11px;
@@ -1068,8 +1100,8 @@
 
   /* Image */
   #perfume-view .product-image { order: 1; display: block; width: 100%; max-width: 100%; padding: 0; min-height: unset; }
-  #perfume-view .product-carousel { display: none; }
-  #perfume-view .mobile-product-img { display: block; width: 100%; height: auto; }
+  #perfume-view .product-carousel { display: block; }
+  #perfume-view .mobile-product-img { display: none; }
   .mobile-caption { display: block !important; }
   .mobile-btns { display: block !important; padding: 0 20px; }
   .mobile-btns-section {
@@ -1111,10 +1143,13 @@
   /* In-store — hidden on mobile */
   .also-available { display: none !important; }
 
+  /* Desktop buttons hidden on mobile — mobile-btns-section handles it */
+  .desktop-edp-btns { display: none !important; }
+
   /* Fragrance Notes — accordion */
   #perfume-view .notes-col { order: 2; height: auto; max-height: none; align-items: flex-start; padding: 0 20px; gap: 0; margin-top: 0; }
   #perfume-view .notes-col .fragrance-notes-btn, #perfume-view .notes-col .fragrance-notes-list { width: 100%; }
-  #perfume-view .fragrance-notes-btn {
+  #perfume-view .fragrance-notes-btn { color: #594679 !important;
     display: flex !important; justify-content: space-between; align-items: center;
     padding: 13px 0 !important; font-family: 'SF Pro Display', -apple-system, sans-serif !important;
     font-size: 11px !important; letter-spacing: 0.06em !important; text-transform: uppercase !important;
@@ -2740,22 +2775,292 @@
   }
 
   /* ===== Cart drawer ===== */
+  /* ===== CAPSULE PAGE ===== */
+  #capsule-view {
+    position: fixed;
+    inset: 0;
+    z-index: 500;
+    background: #fff;
+    overflow-y: auto;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+  }
+  #capsule-view.open { opacity: 1; pointer-events: auto; }
+  /* Capsule page */
+  .capsule-content {
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 48px 40px 140px;
+  }
+  .capsule-editorial {
+    text-align: center;
+  }
+
+  /* All text — same font, same weight, same size */
+  .capsule-editorial p,
+  .capsule-statement,
+  .capsule-limited,
+  .capsule-objects p,
+  .capsule-byline,
+  .capsule-credits p {
+    font-family: 'Proxima Nova Wide', 'Proxima Nova', 'SF Pro Display', -apple-system, sans-serif;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 2.4;
+    color: #111;
+    letter-spacing: 0.02em;
+    margin: 0;
+  }
+
+  .capsule-objects {
+    margin: 56px 0;
+    padding: 40px 0;
+    border-top: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  .capsule-byline { margin-top: 56px !important; }
+  .capsule-credits p { color: #111; }
+
+  @media (max-width: 900px) {
+    .capsule-content { padding: 72px 28px 100px; }
+  }
+  .capsule-header {
+    text-align: center;
+    margin-bottom: 72px;
+  }
+  .capsule-eyebrow {
+    font-family: 'SF Pro Display', -apple-system, sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #bbb;
+    margin: 0 0 16px;
+  }
+  .capsule-title {
+    font-family: "Times New Roman", Times, Georgia, serif;
+    font-size: 48px;
+    font-weight: normal;
+    color: #594679;
+    margin: 0 0 20px;
+    letter-spacing: -0.01em;
+  }
+  .capsule-intro {
+    font-family: "Times New Roman", Times, Georgia, serif;
+    font-size: 16px;
+    font-style: italic;
+    color: #888;
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+  .capsule-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+  }
+  .capsule-item {
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+  .capsule-item:hover { opacity: 0.85; }
+  .capsule-img {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    background: #f5f2f8;
+    margin-bottom: 20px;
+  }
+  .capsule-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+  .capsule-item:hover .capsule-img img { transform: scale(1.02); }
+  .capsule-item-label {
+    font-family: 'SF Pro Display', -apple-system, sans-serif;
+    font-size: 8px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: #bbb;
+    margin: 0 0 8px;
+  }
+  .capsule-item-name {
+    font-family: "Times New Roman", Times, Georgia, serif;
+    font-size: 20px;
+    font-weight: normal;
+    color: #0a0a0a;
+    margin: 0 0 8px;
+  }
+  .capsule-item-meta {
+    font-family: 'SF Pro Display', -apple-system, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: #888;
+    margin: 0 0 4px;
+  }
+  .capsule-item-sub {
+    font-family: "Times New Roman", Times, Georgia, serif;
+    font-size: 13px;
+    font-style: italic;
+    color: #bbb;
+    margin: 0;
+  }
+  @media (max-width: 900px) {
+    .capsule-content { padding: 40px 24px 80px; }
+    .capsule-title { font-size: 36px; }
+    .capsule-header { margin-bottom: 48px; }
+    .capsule-grid { grid-template-columns: 1fr; gap: 40px; }
+  }
+
   /* ===== BABY TEE PAGE ===== */
+  /* Charm page */
+  #charm-view {
+    position: fixed;
+    inset: 0;
+    z-index: 500;
+    background: #fff;
+    overflow-y: auto;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+  }
+  #charm-view.open { opacity: 1; pointer-events: auto; }
+  .charm-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 65vh;
+    text-align: center;
+    padding: 60px 40px;
+  }
+  .charm-top {
+    margin-bottom: 52px;
+  }
+  .charm-coming-soon {
+    font-family: 'Proxima Nova Wide', 'Proxima Nova', 'SF Pro Display', -apple-system, sans-serif;
+    font-size: 26px;
+    font-weight: 300;
+    color: #0a0a0a;
+    letter-spacing: 0.02em;
+    margin: 0 0 4px;
+  }
+  .charm-phone {
+    font-family: 'Proxima Nova Wide', 'Proxima Nova', 'SF Pro Display', -apple-system, sans-serif;
+    font-size: 26px;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+    color: #0a0a0a;
+    margin: 0;
+  }
+  .charm-phone a {
+    color: #0a0a0a;
+    text-decoration: none;
+  }
+  .charm-email-form {
+    width: 260px;
+    border-bottom: 1px solid #0a0a0a;
+    margin-bottom: 48px;
+  }
+  .charm-email-input {
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 10px 0;
+    font-family: 'Proxima Nova Wide', 'Proxima Nova', 'SF Pro Display', -apple-system, sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    background: transparent;
+    color: #0a0a0a;
+    caret-color: #0a0a0a;
+    box-sizing: border-box;
+    text-align: center;
+  }
+  .charm-email-input::placeholder { color: transparent; }
+  .charm-tagline {
+    font-family: 'Proxima Nova Wide', 'Proxima Nova', 'SF Pro Display', -apple-system, sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    color: #0a0a0a;
+    line-height: 1.7;
+    letter-spacing: 0.01em;
+    margin: 0;
+    text-align: center;
+  }
+
   #baby-tee-view {
     position: fixed;
     inset: 0;
     z-index: 500;
     background: #fff;
     overflow-y: auto;
-    transform: translateY(100%);
-    transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
   }
-  #baby-tee-view.open { transform: translateY(0); }
+  #baby-tee-view.open { opacity: 1; pointer-events: auto; }
+
+  /* Sound toggle button */
+  .video-sound-btn {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    background: rgba(0,0,0,0.45);
+    color: #fff;
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    font-size: 16px;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+  }
+  .video-sound-btn:hover { background: rgba(0,0,0,0.7); }
+
+  /* Tee video hero */
+  .tee-video-hero {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: #f5f5f5;
+    display: flex;
+  }
+  .tee-video-hero video {
+    flex: 1;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    min-width: 0;
+  }
+  @media (max-width: 900px) {
+    .tee-video-hero { aspect-ratio: unset; height: 100svh; }
+    .tee-vid-right { display: none !important; }
+    .tee-vid-left { flex: none !important; width: 100% !important; height: 100% !important; object-fit: cover !important; }
+  }
+
+  /* Tee full bleed image */
+  .tee-full-bleed {
+    width: 100%;
+    line-height: 0;
+  }
+  .tee-full-bleed img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
 
   /* Tee 3-column layout matching old charm page */
   .tee-detail {
     display: grid;
-    grid-template-columns: 520px 1fr;
+    grid-template-columns: 640px 1fr;
     max-width: 1100px;
     margin: 0 auto;
     padding: 60px 40px 120px;
@@ -2986,46 +3291,41 @@
   /* ===== FOOTER ===== */
   .page-footer {
     text-align: center;
-    padding: 80px 40px 120px;
-    background: #ffffff;
-    margin-top: 0;
+    padding: 60px 40px 80px;
+    background: #fff;
+    border-top: 1px solid #efefef;
   }
   .page-footer-links {
     display: flex;
     justify-content: center;
-    gap: 48px;
-    margin-bottom: 0;
+    gap: 56px;
+    margin: 0 0 40px;
   }
   .page-footer-links a {
     font-family: 'SF Pro Display', -apple-system, sans-serif;
-    font-size: 14px;
-    letter-spacing: 0.04em;
+    font-size: 13px;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     text-decoration: none;
-    color: #999;
+    color: #aaa;
     transition: color 0.2s;
   }
   .page-footer-links a:hover { color: #7157a1; }
   .page-footer-copy {
-    margin-top: 40px;
-    padding-top: 24px;
-    border-top: 1px solid #f0f0f0;
     font-family: 'SF Pro Display', -apple-system, sans-serif;
     font-size: 9px;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: #ccc;
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    flex-wrap: wrap;
+    margin: 0;
+    white-space: nowrap;
   }
 
   @media (max-width: 900px) {
-    .page-footer { padding: 56px 24px 100px; }
-    .page-footer-links { gap: 32px; }
-    .page-footer-links a { font-size: 12px; letter-spacing: 0.08em; }
-    .page-footer-copy { gap: 20px; flex-direction: column; align-items: center; }
+    .page-footer { padding: 48px 24px 72px; }
+    .page-footer-links { gap: 40px; margin-bottom: 32px; }
+    .page-footer-links a { font-size: 12px; }
+    .page-footer-copy { font-size: 9px; }
   }
 
   #cart-overlay {
@@ -3452,6 +3752,8 @@
   <nav>
     <a href="#" onclick="openPerfume(event)">EAU DE PARFUM</a>
     <a href="#" onclick="openBabyTee(event)">TEE</a>
+    <a href="#" onclick="openCharm(event)">CHARM</a>
+    <a href="#" onclick="openCapsule(event)">CAPSULE</a>
     <a href="#" onclick="openAbout(event)">ABOUT</a>
   </nav>
   <button type="button" class="cart-btn" id="cart-btn" aria-label="Open bag"><svg class="cart-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg><span class="cart-count" id="cart-count">0</span></button>
@@ -3490,6 +3792,9 @@
 </div>
   <nav>
     <a href="#" onclick="openPerfume(event)">EAU DE PARFUM</a>
+    <a href="#" onclick="openBabyTee(event)">TEE</a>
+    <a href="#" onclick="openCharm(event)">CHARM</a>
+    <a href="#" onclick="openCapsule(event)">CAPSULE</a>
     <a href="#" onclick="openAbout(event)">ABOUT</a>
 
   </nav>
@@ -3515,6 +3820,9 @@
 </div>
   <nav>
     <a href="#" onclick="openPerfume(event)">EAU DE PARFUM</a>
+    <a href="#" onclick="openBabyTee(event)">TEE</a>
+    <a href="#" onclick="openCharm(event)">CHARM</a>
+    <a href="#" onclick="openCapsule(event)">CAPSULE</a>
     <a href="#" onclick="openAbout(event)">ABOUT</a>
 
   </nav>
@@ -3574,7 +3882,7 @@
     <a href="#" onclick="openFaqs(event)">FAQS</a>
     <a href="#" onclick="openContact(event)">CONTACT</a>
   </div>
-  <p class="page-footer-copy"><span>Website developed by Deb Tam</span><span>&copy; Radi$h ™ 2025</span></p>
+  <p class="page-footer-copy">Website developed by Deb Tam &nbsp;&nbsp; &copy; Radi$h ™ 2025</p>
 </footer>
 </div>
 <div id="baby-tee-view"><button class="overlay-close-btn" onclick="closeOverlay(event)">← Back</button>
@@ -3587,21 +3895,33 @@
   <nav>
     <a href="#" onclick="openPerfume(event)">EAU DE PARFUM</a>
     <a href="#" onclick="openBabyTee(event)">TEE</a>
+    <a href="#" onclick="openCharm(event)">CHARM</a>
+    <a href="#" onclick="openCapsule(event)">CAPSULE</a>
     <a href="#" onclick="openAbout(event)">ABOUT</a>
   </nav>
   <button type="button" class="cart-btn" aria-label="Open bag"><svg class="cart-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg><span class="cart-count">0</span></button>
 </header>
+
+<section class="tee-video-hero" style="position:relative;">
+  <video id="tee-hero-video" class="tee-vid-left" src="https://cdn.shopify.com/videos/c/o/v/f83bfc40400d412888cb11098fcb00d0.mov" autoplay loop muted playsinline preload="auto" webkit-playsinline="true"></video>
+  <video class="tee-vid-right" src="https://cdn.shopify.com/videos/c/o/v/f83bfc40400d412888cb11098fcb00d0.mov" autoplay loop muted playsinline preload="auto" webkit-playsinline="true"></video>
+  <button class="video-sound-btn" id="tee-sound-btn" onclick="toggleTeeSound()">🔇</button>
+</section>
 
 <section class="tee-detail">
 
   <!-- Center: image -->
   <div class="tee-image">
     <div class="tee-carousel" style="position:relative;">
-      <div class="tee-carousel-track">
-        <img class="tee-slide active" src="https://cdn.shopify.com/s/files/1/0675/3848/5307/files/IMG_7900.jpg?v=1783098596" alt="Maddie's Secret Baby Tee 1" />
-        <img class="tee-slide" src="https://cdn.shopify.com/s/files/1/0675/3848/5307/files/IMG_7712.heic?v=1783098598" alt="Maddie's Secret Baby Tee 2" />
-        <img class="tee-slide" src="https://cdn.shopify.com/s/files/1/0675/3848/5307/files/IMG_3901.heic?v=1783094086" alt="Maddie's Secret Baby Tee 3" />
-        <img class="tee-slide" src="https://cdn.shopify.com/s/files/1/0675/3848/5307/files/IMG_7730.heic?v=1783098598" alt="Maddie's Secret Baby Tee 4" />
+      <div class="tee-carousel-track" id="tee-auto-carousel">
+        <img class="tee-slide active" src="https://cdn.shopify.com/s/files/1/0675/3848/5307/files/Screenshot_2026-07-16_at_12.45.21_AM.png?v=1784155572" alt="Maddie's Secret Baby Tee 1" />
+        <img class="tee-slide" src="https://cdn.shopify.com/s/files/1/0675/3848/5307/files/maddies-secret-john-early-radish-baby-tee-model.jpg?v=1784113115" alt="Maddie's Secret Baby Tee 2" />
+        <img class="tee-slide" src="https://cdn.shopify.com/s/files/1/0675/3848/5307/files/Screenshot_2026-07-16_at_12.43.24_AM.png?v=1784155571" alt="Maddie's Secret Baby Tee 3" />
+        <img class="tee-slide" src="https://cdn.shopify.com/s/files/1/0675/3848/5307/files/Screenshot_2026-07-16_at_12.45.07_AM.png?v=1784155571" alt="Maddie's Secret Baby Tee 4" />
+        <img class="tee-slide" src="https://cdn.shopify.com/s/files/1/0675/3848/5307/files/maddies-secret-radish-emily-allen-leah-victoria-hennessey-baby-tee.jpg?v=1784147423" alt="Maddie's Secret Baby Tee 5" />
+        <img class="tee-slide" src="https://cdn.shopify.com/s/files/1/0675/3848/5307/files/maddies-secret-john-early-radish-best-friends-tee.jpg?v=1784113115" alt="Maddie's Secret Baby Tee 6" />
+        <img class="tee-slide" src="https://cdn.shopify.com/s/files/1/0675/3848/5307/files/Screenshot_2026-07-16_at_12.44.50_AM.png?v=1784155496" alt="Maddie's Secret Baby Tee 7" />
+        <img class="tee-slide" src="https://cdn.shopify.com/s/files/1/0675/3848/5307/files/maddies-secret-john-early-radish-tee.jpg?v=1784113115" alt="Maddie's Secret Baby Tee 8" />
       </div>
       <button class="tee-arrow tee-prev" onclick="teeCarouselPrev()" aria-label="Previous">&#8592;</button>
       <button class="tee-arrow tee-next" onclick="teeCarouselNext()" aria-label="Next">&#8594;</button>
@@ -3612,9 +3932,9 @@
   <div class="tee-info">
     
 
-    <h2 class="tee-info-label">GourMaybe Girl Baby Rib Tee & Unisex Tee</h2>
+    <h2 class="tee-info-label">Maddie's Secret Baby Rib & Unisex Tee</h2>
 
-    <p class="tee-copy-body">This is a classic take on a baby-rib tee — produced in small batches, a RARE 90s-style LA-inspired garment cut from 100% combed cotton, with the comfort of your favorite shirt but with a chic, almost high-end luxury twist. What sets it apart is the print. Fine artist and painter Gordon Landenberger drew an original graphite portrait of John Early as Maddie Ralph in John's Los Angeles home. The work was subsequently transferred by screenprint onto heather gray, preserving the intimacy of the original drawing in every run. This Maddie's Secret collectible carries all the punch of American-made with a subtle hint of Italian Renaissance and the sensibility of George Stavrinos. We hope you enjoy it.</p>
+    <p class="tee-copy-body">This heartbreaking baby tee was designed by artist Gordon Landenberger. The main image of the tee is an original graphite portrait live drawn by Gordon of John Early dressed as Maddie Ralph. This Maddie's Secret collectible tee carries Americana punch with a subtle nod to the Italian Renaissance and the sensibility of George Stavrinos.</p>
 
     <ul class="tee-specs">
       <li>LA Apparel</li>
@@ -3634,12 +3954,112 @@
 
 </section>
 
+
+
 <footer class="page-footer">
   <div class="page-footer-links">
     <a href="#" onclick="openFaqs(event)">FAQS</a>
     <a href="#" onclick="openContact(event)">CONTACT</a>
   </div>
-  <p class="page-footer-copy"><span>Website developed by Deb Tam</span><span>&copy; Radi$h ™ 2025</span></p>
+  <p class="page-footer-copy">Website developed by Deb Tam &nbsp;&nbsp; &copy; Radi$h ™ 2025</p>
+</footer>
+</div>
+
+<div id="capsule-view"><button class="overlay-close-btn" onclick="closeOverlay(event)">← Back</button>
+
+<header class="site-header">
+  <div class="logo-lockup">
+    <img src="https://cdn.shopify.com/s/files/1/0675/3848/5307/files/MS_Cameo_with_Oval_Ring.png?v=1781633907" alt="Maddie's Secret cameo" class="logo-cameo" />
+    <h1 class="logo"><a href="#" onclick="closeOverlay(event)">maddie's secrets</a></h1>
+  </div>
+  <nav>
+    <a href="#" onclick="openPerfume(event)">EAU DE PARFUM</a>
+    <a href="#" onclick="openBabyTee(event)">TEE</a>
+    <a href="#" onclick="openCharm(event)">CHARM</a>
+    <a href="#" onclick="openCapsule(event)">CAPSULE</a>
+    <a href="#" onclick="openAbout(event)">ABOUT</a>
+  </nav>
+  <button type="button" class="cart-btn" aria-label="Open bag"><svg class="cart-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg><span class="cart-count">0</span></button>
+</header>
+
+<section class="capsule-content">
+
+  <div class="capsule-editorial">
+
+    <p class="capsule-statement">"what happened to the ingenue?" john early asks in the first line of his director's statement for his film debut <em>maddie's secret.</em></p>
+
+    <p class="capsule-statement">maddie's secret capsule collection is the ingenue.</p>
+
+    <p class="capsule-statement">3 totally different ways to explore the ingenue: maddie ralph</p>
+
+    <p class="capsule-limited">super super limited edition items</p>
+    <p class="capsule-limited">for the girl girl gone complex</p>
+
+    <div class="capsule-objects">
+      <p>a perfume by marissa zappas</p>
+      <p>a t-shirt by gordon landenberger</p>
+      <p>a locket by natasha goshn</p>
+    </div>
+
+    <p class="capsule-byline">maddie's secret capsule collection by john early + radish</p>
+
+    <div class="capsule-credits">
+      <p>creative directed by john early, ruby mccollister, deb tam, gordon landenberger</p>
+      <p>branding & design by gordon landenberger</p>
+      <p>perfume video by ruby mccollister</p>
+      <p>videos and promo photos by max lakner</p>
+      <p>tee video editing & website by deb tam</p>
+      <p>models leah hennessey, emily allan + ruby mccollister</p>
+      <p>special thanks unapologetic</p>
+    </div>
+
+  </div>
+
+</section>
+
+<footer class="page-footer">
+  <div class="page-footer-links">
+    <a href="#" onclick="openFaqs(event)">FAQS</a>
+    <a href="#" onclick="openContact(event)">CONTACT</a>
+  </div>
+  <p class="page-footer-copy">Website developed by Deb Tam &nbsp;&nbsp; &copy; Radi$h ™ 2025</p>
+</footer>
+</div>
+
+<div id="charm-view"><button class="overlay-close-btn" onclick="closeOverlay(event)">← Back</button>
+
+<header class="site-header">
+  <div class="logo-lockup">
+    <img src="https://cdn.shopify.com/s/files/1/0675/3848/5307/files/MS_Cameo_with_Oval_Ring.png?v=1781633907" alt="Maddie's Secret cameo" class="logo-cameo" />
+    <h1 class="logo"><a href="#" onclick="goHome(event)">maddie's secrets</a></h1>
+  </div>
+  <nav>
+    <a href="#" onclick="openPerfume(event)">EAU DE PARFUM</a>
+    <a href="#" onclick="openBabyTee(event)">TEE</a>
+    <a href="#" onclick="openCharm(event)">CHARM</a>
+    <a href="#" onclick="openCapsule(event)">CAPSULE</a>
+    <a href="#" onclick="openAbout(event)">ABOUT</a>
+  </nav>
+  <button type="button" class="cart-btn" aria-label="Open bag"><svg class="cart-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg><span class="cart-count">0</span></button>
+</header>
+
+<section class="charm-content">
+  <div class="charm-top">
+    <p class="charm-coming-soon">coming soon</p>
+    <p class="charm-phone"><a href="tel:7077732687">707-secrets</a></p>
+  </div>
+  <form class="charm-email-form" onsubmit="charmSubmit(event)">
+    <input type="email" id="charm-input" class="charm-email-input" placeholder="" required />
+  </form>
+  <p class="charm-tagline" id="charm-tagline">add email for a chance to compete<br>in the good girl charm sweepstakes<br>1 of 7</p>
+</section>
+
+<footer class="page-footer">
+  <div class="page-footer-links">
+    <a href="#" onclick="openFaqs(event)">FAQS</a>
+    <a href="#" onclick="openContact(event)">CONTACT</a>
+  </div>
+  <p class="page-footer-copy">Website developed by Deb Tam &nbsp;&nbsp; &copy; Radi$h ™ 2025</p>
 </footer>
 </div>
 
@@ -3653,6 +4073,8 @@
   <nav>
     <a href="#" onclick="openPerfume(event)">EAU DE PARFUM</a>
     <a href="#" onclick="openBabyTee(event)">TEE</a>
+    <a href="#" onclick="openCharm(event)">CHARM</a>
+    <a href="#" onclick="openCapsule(event)">CAPSULE</a>
     <a href="#" onclick="openAbout(event)">ABOUT</a>
   </nav>
   <button type="button" class="cart-btn" aria-label="Open bag"><svg class="cart-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg><span class="cart-count">0</span></button>
@@ -3661,7 +4083,7 @@
 <section class="about-content">
 
   <div class="about-collab">
-    <p class="about-collab-title">About the Collaboration</p>
+    <p class="about-collab-title">Maddie's Secret Eau De Parfum Collaboration</p>
     <p>John Early and Marissa Zappas with Radish present a new, sensory dimension of his feature film Maddie's Secret: an eponymous gourmand perfume.</p>
     <p>Maddie's Secret, John Early's directorial debut, tells the story of Maddie Ralph, an unexpected viral food influencer celebrated for her unique and inspired recipes. However, once the pace of Maddie's newly fledged fame increases, so does a secret she has lived with since childhood. And we are all left wondering: Will Maddie be a good girl forever — or is this her moment of personal liberation?</p>
     <p>Maddie's Secret EDP is in direct ode to our heroine. With notes of night-blooming jasmine, toasted rice, chocolate milk, saffron, and Sichuan pepper, the perfume winks at the millennial influencer-approved ingredients of test kitchens past while paying sincere respect to Maddie's hometown of Los Angeles, her innocence, maternal comforts, and the dark wildness of secrecy.</p>
@@ -3757,15 +4179,16 @@
     <a href="#" onclick="openFaqs(event)">FAQS</a>
     <a href="#" onclick="openContact(event)">CONTACT</a>
   </div>
-  <p class="page-footer-copy"><span>Website developed by Deb Tam</span><span>&copy; Radi$h ™ 2025</span></p>
+  <p class="page-footer-copy">Website developed by Deb Tam &nbsp;&nbsp; &copy; Radi$h ™ 2025</p>
 </footer>
 </div>
 <div id="perfume-view"><button class="overlay-close-btn" onclick="closeOverlay(event)">← Back</button>
 
 <!-- Hero slideshow (cross-fading) -->
-<section class="hero">
+<section class="hero" style="position:relative;">
   <div class="hero-stack">
-    <video src="https://cdn.shopify.com/videos/c/o/v/314b9422fa3048baa3d3242a9ed22071.mov" autoplay loop muted playsinline preload="auto" webkit-playsinline="true"></video>
+    <video id="edp-hero-video" src="https://cdn.shopify.com/videos/c/o/v/314b9422fa3048baa3d3242a9ed22071.mov" autoplay loop playsinline preload="auto" webkit-playsinline="true"></video>
+    <button class="video-sound-btn" id="edp-sound-btn" onclick="toggleEdpSound()">🔇</button>
   </div>
 </section>
 
@@ -3787,11 +4210,6 @@
 
   <div class="product-image">
     <img src="https://cdn.shopify.com/s/files/1/0675/3848/5307/files/maddies-secret-john-early-marissa-zappas-gourmand-radish-5.png?v=1781636380" alt="Maddie's Secret EDP" class="mobile-product-img" />
-      <p class="img-caption mobile-caption">LIMITED EDITION EAU DE PARFUM BY RADISH<br>CREATED BY MARISSA ZAPPAS WITH JOHN EARLY<br>INSPIRED BY THE FILM <a href="https://www.magpictures.com/maddiessecret/" target="_blank" rel="noopener" class="caption-link">MADDIE'S SECRET</a><br>EXCLUSIVELY SOLD AT LUCKYSCENT &amp; SCENT BAR</p>
-      <div class="mobile-btns-section">
-        <button type="button" class="perfume-order-btn" data-product="edp">Pre Order Eau de Parfum · $125</button>
-        <a href="https://www.magpictures.com/maddiessecret/" target="_blank" rel="noopener" class="film-tickets-btn">Buy Tickets to John Early's Critically Acclaimed Film</a>
-      </div>
       <div class="product-carousel">
       <button type="button" class="carousel-arrow carousel-prev" onclick="carouselPrev()" aria-label="Previous image">&#8592;</button>
       <div class="carousel-track">
@@ -3804,8 +4222,16 @@
       </div>
       <button type="button" class="carousel-arrow carousel-next" onclick="carouselNext()" aria-label="Next image">&#8594;</button>
     <p class="img-caption">LIMITED EDITION EAU DE PARFUM BY RADISH<br>CREATED BY MARISSA ZAPPAS WITH JOHN EARLY<br>INSPIRED BY THE FILM <a href="https://www.magpictures.com/maddiessecret/" target="_blank" rel="noopener" class="caption-link">MADDIE'S SECRET</a><br>EXCLUSIVELY SOLD AT LUCKYSCENT &amp; SCENT BAR</p>
+      <div class="mobile-btns-section">
+        <button type="button" class="perfume-order-btn" data-product="edp">Pre Order Eau de Parfum · $125</button>
+        <a href="https://www.magpictures.com/maddiessecret/" target="_blank" rel="noopener" class="film-tickets-btn">Buy Tickets to John Early's Critically Acclaimed Film</a>
+    <button type="button" onclick="openAbout(event)" class="film-tickets-btn" style="background:#fff;color:#0a0a0a;border:1px solid #0a0a0a;margin-top:10px;">About</button>
+      </div>
+    <div class="desktop-edp-btns">
     <button type="button" class="perfume-order-btn" data-product="edp" id="main-order-btn">Pre Order Eau de Parfum · $125</button>
     <a href="https://www.magpictures.com/maddiessecret/" target="_blank" rel="noopener" class="film-tickets-btn">Buy Tickets to John Early's Critically Acclaimed Film</a>
+    <button type="button" onclick="openAbout(event)" class="film-tickets-btn" style="background:#fff;color:#0a0a0a;border:1px solid #0a0a0a;margin-top:10px;">About</button>
+    </div>
     </div>
 
   </div>
@@ -3829,7 +4255,7 @@
     <a href="#" onclick="openFaqs(event)">FAQS</a>
     <a href="#" onclick="openContact(event)">CONTACT</a>
   </div>
-  <p class="page-footer-copy"><span>Website developed by Deb Tam</span><span>&copy; Radi$h ™ 2025</span></p>
+  <p class="page-footer-copy">Website developed by Deb Tam &nbsp;&nbsp; &copy; Radi$h ™ 2025</p>
 </footer>
 </div>
 
@@ -3912,25 +4338,95 @@
     document.getElementById(id).classList.add('open');
     document.body.classList.add('overlay-open');
     document.getElementById(id).scrollTop = 0;
+    // Pause EDP video when navigating away
+    var edpVid = document.getElementById('edp-hero-video');
+    if (edpVid) edpVid.pause();
   }
-  // Tee carousel
+  // Tee carousel manual + auto
   (function() {
     var slides = [];
     var idx = 0;
+    var autoTimer = null;
     function init() {
-      slides = document.querySelectorAll('.tee-slide');
+      var track = document.getElementById('tee-auto-carousel');
+      slides = track ? Array.from(track.querySelectorAll('.tee-slide')) : [];
+      startAuto();
     }
     function show(n) {
-      slides.forEach(function(s) { s.classList.remove('active'); });
+      if (!slides.length) return;
+      slides[idx].classList.remove('active');
       idx = (n + slides.length) % slides.length;
       slides[idx].classList.add('active');
     }
-    window.teeCarouselPrev = function() { if (!slides.length) init(); show(idx - 1); };
-    window.teeCarouselNext = function() { if (!slides.length) init(); show(idx + 1); };
+    function startAuto() {
+      if (autoTimer) clearInterval(autoTimer);
+      autoTimer = setInterval(function() { show(idx + 1); }, 3000);
+    }
+    window.teeCarouselPrev = function() { show(idx - 1); startAuto(); };
+    window.teeCarouselNext = function() { show(idx + 1); startAuto(); };
     document.addEventListener('DOMContentLoaded', init);
   })();
 
-  function openBabyTee(e) { if (e) { e.preventDefault(); e.stopPropagation(); } closeOverlay(); openOverlay('baby-tee-view'); return false; }
+  function openCapsule(e) { if (e) { e.preventDefault(); e.stopPropagation(); } closeOverlay(); openOverlay('capsule-view'); return false; }
+  // EDP sound toggle
+  var edpSoundOn = false;
+  function toggleEdpSound() {
+    var v = document.getElementById('edp-hero-video');
+    var btn = document.getElementById('edp-sound-btn');
+    if (!v) return;
+    edpSoundOn = !edpSoundOn;
+    v.muted = !edpSoundOn;
+    btn.textContent = edpSoundOn ? '🔊' : '🔇';
+  }
+
+  // Tee sound toggle
+  var teeSoundOn = false;
+  function toggleTeeSound() {
+    var v = document.getElementById('tee-hero-video');
+    var btn = document.getElementById('tee-sound-btn');
+    if (!v) return;
+    teeSoundOn = !teeSoundOn;
+    v.muted = !teeSoundOn;
+    btn.textContent = teeSoundOn ? '🔊' : '🔇';
+  }
+
+  function charmSubmit(e) {
+    e.preventDefault();
+    var input = document.getElementById('charm-input');
+    var tagline = document.getElementById('charm-tagline');
+    var email = input.value;
+    input.disabled = true;
+
+    fetch('https://tally.so/r/LZNqv2', {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: 'email=' + encodeURIComponent(email)
+    });
+
+    input.value = '';
+    input.style.display = 'none';
+    if (tagline) tagline.textContent = 'thank you ♡';
+  }
+
+  function openCharm(e) { if (e) { e.preventDefault(); e.stopPropagation(); } closeOverlay(); openOverlay('charm-view'); return false; }
+  // Offset right tee video so they're out of sync
+  document.addEventListener('DOMContentLoaded', function() {
+    var b = document.querySelector('.tee-vid-right');
+    if (!b) return;
+    b.addEventListener('loadedmetadata', function() {
+      b.currentTime = b.duration * 0.4;
+      b.play();
+    });
+    b.load();
+  });
+
+  function openBabyTee(e) { if (e) { e.preventDefault(); e.stopPropagation(); } closeOverlay(); openOverlay('baby-tee-view');
+    setTimeout(function() {
+      var v = document.getElementById('tee-hero-video');
+      if (v) { v.muted = false; v.play(); }
+      document.querySelectorAll('.tee-vid-right').forEach(function(r) { r.muted = true; r.play(); });
+    }, 100); return false; }
   function openAbout(e) { if (e) { e.preventDefault(); e.stopPropagation(); } closeOverlay(); openOverlay('about-view'); return false; }
   function openFaqs(e) { if (e) { e.preventDefault(); e.stopPropagation(); } closeOverlay(); openOverlay('faqs-view'); return false; }
   function openContact(e) { if (e) { e.preventDefault(); e.stopPropagation(); } closeOverlay(); openOverlay('contact-view'); return false; }
@@ -3959,6 +4455,13 @@
       e.preventDefault();
       dismissSplash();
     });
+    // Play tee video, pause EDP
+    setTimeout(function() {
+      var teeVid = document.getElementById('tee-hero-video');
+      if (teeVid) teeVid.play();
+      var edpVid = document.getElementById('edp-hero-video');
+      if (edpVid) edpVid.pause();
+    }, 100);
   })();
 
   // Credits tap to reveal role on mobile
@@ -3978,10 +4481,15 @@
   function openPerfume(e) { if (e) { e.preventDefault(); e.stopPropagation(); } closeOverlay(); window.scrollTo(0,0); return false; }
   function closeOverlay(e) {
     if (e) e.preventDefault();
-    ['about-view','faqs-view','contact-view','cinema-view','baby-tee-view'].forEach(function(id) {
+    ['about-view','faqs-view','contact-view','cinema-view','baby-tee-view','capsule-view','charm-view'].forEach(function(id) {
       var el = document.getElementById(id);
       if (el) el.classList.remove('open');
     });
+    // Pause tee video, resume EDP video with sound
+    var teeVid = document.getElementById('tee-hero-video');
+    if (teeVid) teeVid.pause();
+    var edpVid = document.getElementById('edp-hero-video');
+    if (edpVid) { edpVid.play(); }
     document.body.classList.remove('overlay-open');
     window.scrollTo(0, 0);
   }
@@ -4501,6 +5009,9 @@
 </div>
   <nav>
     <a href="#" onclick="openPerfume(event)">EAU DE PARFUM</a>
+    <a href="#" onclick="openBabyTee(event)">TEE</a>
+    <a href="#" onclick="openCharm(event)">CHARM</a>
+    <a href="#" onclick="openCapsule(event)">CAPSULE</a>
     <a href="#" onclick="openAbout(event)">ABOUT</a>
 
   </nav>
@@ -5055,3 +5566,4 @@
 </script>
 </body>
 </html>
+
