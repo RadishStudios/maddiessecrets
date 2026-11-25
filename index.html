@@ -4695,6 +4695,10 @@
 
   #perfume-view .details .price-maker { margin: -18px 0 -3.3px !important; padding: 0 !important; font-family: 'SF Pro Display', -apple-system, sans-serif; font-size: 13px; line-height: 16px; letter-spacing: 0.01em; color: #0a0a0a; text-transform: none; }
 
+  /* black buy button (variant) */
+  #perfume-view button.perfume-order-btn { background: #0a0a0a !important; color: #ffffff !important; border-color: #0a0a0a !important; }
+  #perfume-view button.perfume-order-btn:hover, #perfume-view button.perfume-order-btn:active { background: #ffffff !important; color: #0a0a0a !important; }
+
   .promo-bar-black { background: #7157a1; color: #ffffff; border-bottom: 1px solid #0a0a0a; cursor: default; }
   #baby-tee-view .overlay-close-btn { top: 48px; }
 
@@ -7265,7 +7269,7 @@
 (function() {
   var PRODUCTS = {
     edp:    { name: "Maddie's Secret · Eau de Parfum", meta: "35ml · limited edition", price: 125, img: "", variant: "43638121955387" },
-    sample: { name: "Maddie's Secret · Sample Spray", meta: "1.5ml · promo code toward a full bottle · ships 12/2", price: 7, img: "", variant: "SAMPLE_VARIANT_ID" },
+    sample: { name: "Maddie's Secret · Sample Spray", meta: "1.5ml · promo code toward a full bottle · ships 12/2", price: 7, img: "https://cdn.shopify.com/s/files/1/0675/3848/5307/files/Screenshot_2026-11-24_at_4.48.11_PM.png?v=1795649449&width=360", variant: "44010885120059" },
   };
   var SHIPPING = 12;
   var TAX_RATE = 0.08875; // NYC
@@ -7275,7 +7279,7 @@
   // Pull product images from the page
   (function() {
     var edpImg = document.querySelector('.carousel-slide.active img, .carousel-slide img, .product-image .img-placeholder img');
-    if (edpImg && edpImg.src) { PRODUCTS.edp.img = edpImg.src; PRODUCTS.sample.img = edpImg.src; }
+    if (edpImg && edpImg.src) PRODUCTS.edp.img = edpImg.src;
   })();
 
   // step elements — exit if cart drawer not in DOM
