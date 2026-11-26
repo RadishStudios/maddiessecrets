@@ -1119,7 +1119,7 @@
     position: relative;
   }
   .site-header .logo { font-size: 28px !important; letter-spacing: 0.02em !important; }
-  .logo-cameo { width: 140px !important; margin: -22px auto -16px !important; }
+  .logo-cameo { width: 140px !important; margin: -8px auto -16px !important; }
   .site-header nav { justify-content: center !important; gap: 16px !important; margin-top: 14px !important; font-size: 12px !important; letter-spacing: 0.04em !important; flex-wrap: nowrap !important; white-space: nowrap !important; overflow-x: auto !important; -webkit-overflow-scrolling: touch !important; padding: 0 8px !important; }
   /* Logo always black */
 
@@ -4771,6 +4771,8 @@
   .cap-wrap.revealed .reveal-line:nth-of-type(4) { transition-delay: 0.61s; }
   .cap-wrap:not(.revealed) .reveal-line { transition-duration: 0.3s; transition-delay: 0s; }
   @media (prefers-reduced-motion: reduce) { .cap-wrap { grid-template-rows: 1fr; transition: none; } .cap-wrap .reveal-line { opacity: 1; filter: none; transform: none; transition: none; } }
+  /* mobile header is not sticky, so it must not be shifted under the promo bar */
+  @media (max-width: 900px) { body > .promo-bar ~ header.site-header, #baby-tee-view > .promo-bar ~ header.site-header { top: 0 !important; } }
 </style>
 
 <script type="application/ld+json">
@@ -4975,7 +4977,7 @@
 </footer>
 </div>
 <div id="baby-tee-view"><button class="overlay-close-btn" onclick="closeOverlay(event)">← Back</button>
-<div class="promo-bar promo-bar-black" aria-label="Coming soon: 20% off Maddie's Tee"><div class="promo-track"><div class="promo-group" aria-hidden="false"><span class="promo-item">Coming soon - 20% off Maddie&rsquo;s Tee</span><span class="promo-item">Coming soon - 20% off Maddie&rsquo;s Tee</span><span class="promo-item">Coming soon - 20% off Maddie&rsquo;s Tee</span><span class="promo-item">Coming soon - 20% off Maddie&rsquo;s Tee</span><span class="promo-item">Coming soon - 20% off Maddie&rsquo;s Tee</span><span class="promo-item">Coming soon - 20% off Maddie&rsquo;s Tee</span></div><div class="promo-group" aria-hidden="true"><span class="promo-item">Coming soon - 20% off Maddie&rsquo;s Tee</span><span class="promo-item">Coming soon - 20% off Maddie&rsquo;s Tee</span><span class="promo-item">Coming soon - 20% off Maddie&rsquo;s Tee</span><span class="promo-item">Coming soon - 20% off Maddie&rsquo;s Tee</span><span class="promo-item">Coming soon - 20% off Maddie&rsquo;s Tee</span><span class="promo-item">Coming soon - 20% off Maddie&rsquo;s Tee</span></div></div></div>
+<div class="promo-bar promo-bar-black" aria-label="Black Friday sale: 20% off Maddie's Tee"><div class="promo-track"><div class="promo-group" aria-hidden="false"><span class="promo-item">Black Friday sale: 20% off Maddie&rsquo;s Tee</span><span class="promo-item">Black Friday sale: 20% off Maddie&rsquo;s Tee</span><span class="promo-item">Black Friday sale: 20% off Maddie&rsquo;s Tee</span><span class="promo-item">Black Friday sale: 20% off Maddie&rsquo;s Tee</span><span class="promo-item">Black Friday sale: 20% off Maddie&rsquo;s Tee</span><span class="promo-item">Black Friday sale: 20% off Maddie&rsquo;s Tee</span></div><div class="promo-group" aria-hidden="true"><span class="promo-item">Black Friday sale: 20% off Maddie&rsquo;s Tee</span><span class="promo-item">Black Friday sale: 20% off Maddie&rsquo;s Tee</span><span class="promo-item">Black Friday sale: 20% off Maddie&rsquo;s Tee</span><span class="promo-item">Black Friday sale: 20% off Maddie&rsquo;s Tee</span><span class="promo-item">Black Friday sale: 20% off Maddie&rsquo;s Tee</span><span class="promo-item">Black Friday sale: 20% off Maddie&rsquo;s Tee</span></div></div></div>
 
 <header class="site-header">
   <div class="logo-lockup">
@@ -5044,7 +5046,6 @@
       <p class="tee-callout-item">Available: Classic Tee, Unisex, no rib texture</p>
     </div>
 
-    <div class="tee-promo"><span class="tee-promo-soon">coming soon</span><span class="tee-promo-main">20% OFF MADDIE&rsquo;S TEE</span></div>
     <div class="tee-actions">
       <a href="https://maddiessecret.merchtable.com/apparel/portrait-baby-tee" target="_blank" rel="noopener" class="tee-add-btn" data-track="tee-merchtable">Buy at Merchtable ↗</a>
     </div>
